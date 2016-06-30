@@ -4,8 +4,7 @@ The Time Waster aka BigMT iOS App
 
 Work still in progress.
 
-Need to implement in app purchases.
-
+If you would like to participate in the project testing via Test Flight, please talk to me or e-mail molotov2k -a- gmail.com.
 
 
 FEW HUNBLE NOTES
