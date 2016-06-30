@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Main-->
+        <scene sceneID="hNz-n2-bh7">
+            <objects>
+                <viewController id="9pv-A4-QxB" customClass="MainViewController" customModule="BigMT" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fDq-zl-cUN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gtg-C2-gTY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time wasted:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeW-98-ueM">
+                                <rect key="frame" x="112" y="256" width="97" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbD-W6-sic">
+                                <rect key="frame" x="102" y="284" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EeW-98-ueM" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="68u-bi-bXb"/>
+                            <constraint firstItem="GbD-W6-sic" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="FX1-76-DbK"/>
+                            <constraint firstItem="GbD-W6-sic" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="13.5" id="Vnu-j9-2Zq"/>
+                            <constraint firstItem="EeW-98-ueM" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="-18" id="q4g-je-G2g"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Main" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="currentlyWastedTimeLabel" destination="GbD-W6-sic" id="kg5-4N-6V8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400" y="-303"/>
+        </scene>
+        <!--Global stats-->
+        <scene sceneID="51O-kl-xvt">
+            <objects>
+                <viewController id="I7t-Ml-bhx" userLabel="Global stats" customClass="GlobalStatsViewController" customModule="BigMT" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YAq-j0-o7c"/>
+                        <viewControllerLayoutGuide type="bottom" id="Se0-Zv-nLY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LDb-k2-Tkz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average time wasted in one use:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cf-6k-mVC">
+                                <rect key="frame" x="43" y="91" width="234" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most time wasted in one use:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol2-rK-wwf">
+                                <rect key="frame" x="54" y="154" width="211" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDd-kb-gln">
+                                <rect key="frame" x="102" y="182" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total time wasted with this app:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPz-qA-daF">
+                                <rect key="frame" x="46" y="406" width="229" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7w-SH-aMh">
+                                <rect key="frame" x="102" y="434" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most time wasted in one day:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVy-xe-s6Z">
+                                <rect key="frame" x="54" y="280" width="212" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWy-X0-kZs">
+                                <rect key="frame" x="102" y="308" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average time wasted in one day:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqq-T0-XFF">
+                                <rect key="frame" x="43" y="217" width="234" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrS-L1-OlL">
+                                <rect key="frame" x="102" y="245" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most total time wasted by user:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4B-zY-bhL">
+                                <rect key="frame" x="47" y="343" width="227" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ms1-2n-hXU">
+                                <rect key="frame" x="102" y="371" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Statistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcQ-cw-E0d">
+                                <rect key="frame" x="105" y="30" width="111" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-of-2d8">
+                                <rect key="frame" x="54" y="50" width="137" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qd-eE-Yj9">
+                                <rect key="frame" x="199" y="50" width="67" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diJ-AJ-h67">
+                                <rect key="frame" x="102" y="119" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZWy-X0-kZs" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="37.5" id="1xC-i7-b5C"/>
+                            <constraint firstItem="ms1-2n-hXU" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="100.5" id="6N9-tT-KM6"/>
+                            <constraint firstItem="CDd-kb-gln" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="6Uv-Gr-XgZ"/>
+                            <constraint firstItem="QrS-L1-OlL" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="-25.5" id="9F4-cS-axQ"/>
+                            <constraint firstItem="8qd-eE-Yj9" firstAttribute="top" secondItem="LDb-k2-Tkz" secondAttribute="top" constant="50" id="Afw-Ls-FUx"/>
+                            <constraint firstItem="CDd-kb-gln" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="-88.5" id="Azy-uU-aCs"/>
+                            <constraint firstItem="ms1-2n-hXU" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="D4y-5W-alm"/>
+                            <constraint firstItem="p4B-zY-bhL" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="69" id="Db7-DA-3hb"/>
+                            <constraint firstItem="qVy-xe-s6Z" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="EgH-HS-wK4"/>
+                            <constraint firstItem="qcQ-cw-E0d" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="HLy-yC-2xR"/>
+                            <constraint firstItem="Oqq-T0-XFF" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="-57" id="MP7-IQ-N6U"/>
+                            <constraint firstItem="Ol2-rK-wwf" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="-120" id="S1c-gC-HX8"/>
+                            <constraint firstItem="K7w-SH-aMh" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="163.5" id="VAp-7Y-SsQ"/>
+                            <constraint firstItem="ZWy-X0-kZs" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="a5l-BX-lgk"/>
+                            <constraint firstItem="Ol2-rK-wwf" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="c54-9d-lUY"/>
+                            <constraint firstItem="diJ-AJ-h67" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="cYh-3O-6TY"/>
+                            <constraint firstItem="p4B-zY-bhL" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="dt5-MS-IZ2"/>
+                            <constraint firstItem="0cf-6k-mVC" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="-183" id="eOr-vc-gP5"/>
+                            <constraint firstItem="qcQ-cw-E0d" firstAttribute="top" secondItem="LDb-k2-Tkz" secondAttribute="top" constant="30" id="h3c-4o-MWM"/>
+                            <constraint firstItem="YtN-of-2d8" firstAttribute="top" secondItem="LDb-k2-Tkz" secondAttribute="top" constant="50" id="kP9-Ke-w7W"/>
+                            <constraint firstItem="QrS-L1-OlL" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="lv3-V0-cIf"/>
+                            <constraint firstItem="qVy-xe-s6Z" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="6" id="mtq-Lo-gzd"/>
+                            <constraint firstItem="diJ-AJ-h67" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="-151.5" id="oDo-8H-WMs"/>
+                            <constraint firstItem="Oqq-T0-XFF" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="oL7-rJ-K4b"/>
+                            <constraint firstItem="8qd-eE-Yj9" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" constant="72.5" id="oyx-cZ-vnp"/>
+                            <constraint firstItem="fPz-qA-daF" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="132" id="p1f-EA-zfu"/>
+                            <constraint firstItem="YtN-of-2d8" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" constant="-37.5" id="suA-jD-8fG"/>
+                            <constraint firstItem="0cf-6k-mVC" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="uuH-Ra-uhf"/>
+                            <constraint firstItem="fPz-qA-daF" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="ySb-w9-hcN"/>
+                            <constraint firstItem="K7w-SH-aMh" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="zXP-Jp-H5V"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Global Stats" id="SJw-NZ-kZF"/>
+                    <connections>
+                        <outlet property="averageWastedTimeInDayLabel" destination="QrS-L1-OlL" id="dfm-zm-vuw"/>
+                        <outlet property="averageWastedTimeInUseLabel" destination="diJ-AJ-h67" id="8mF-g6-l85"/>
+                        <outlet property="currentlyWastedTimeLabel" destination="8qd-eE-Yj9" id="8MW-5b-ryr"/>
+                        <outlet property="maxTotalWastedTimeByUserLabel" destination="ms1-2n-hXU" id="WSS-Ox-6Lc"/>
+                        <outlet property="maxWastedTimeInDayLabel" destination="ZWy-X0-kZs" id="tuz-aA-DaU"/>
+                        <outlet property="maxWastedTimeInUseLabel" destination="CDd-kb-gln" id="qJa-oR-8pt"/>
+                        <outlet property="totalWastedTimeLabel" destination="K7w-SH-aMh" id="08D-V5-8x5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8dX-kN-T5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="779" y="-303"/>
+        </scene>
+        <!--Your Stats-->
+        <scene sceneID="wg7-f3-ORb">
+            <objects>
+                <viewController id="8rJ-Kc-sve" customClass="LocalStatsViewController" customModule="BigMT" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cgc-cf-EQo"/>
+                        <viewControllerLayoutGuide type="bottom" id="pAV-XF-gMy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average time you wasted in one use:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wsc-zV-O1M">
+                                <rect key="frame" x="29" y="129" width="264" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOa-7t-caR">
+                                <rect key="frame" x="102" y="159" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most time you wasted in one use:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSI-dv-rFK">
+                                <rect key="frame" x="39" y="194" width="242" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jou-mt-R2U">
+                                <rect key="frame" x="102" y="222" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your total time wasted:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDS-jI-s4A">
+                                <rect key="frame" x="77" y="383" width="166" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="424-Pf-6sT">
+                                <rect key="frame" x="102" y="411" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most time you wasted in one day:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVJ-UM-8ty">
+                                <rect key="frame" x="39" y="320" width="242" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN2-Y1-Wgi">
+                                <rect key="frame" x="102" y="348" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average time you wasted in one day:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAO-Ye-XeM">
+                                <rect key="frame" x="28" y="257" width="265" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CP5-51-fcY">
+                                <rect key="frame" x="102" y="285" width="117" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Local Statistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3h-Sz-H7V">
+                                <rect key="frame" x="108" y="30" width="104" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsb-OY-fQk">
+                                <rect key="frame" x="54" y="50" width="137" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvG-0Q-41I">
+                                <rect key="frame" x="199" y="50" width="67" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CN2-Y1-Wgi" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="79x-qn-g4y"/>
+                            <constraint firstItem="424-Pf-6sT" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="140.5" id="8La-eM-BDZ"/>
+                            <constraint firstItem="CN2-Y1-Wgi" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="77.5" id="AeM-ft-QLC"/>
+                            <constraint firstItem="hsb-OY-fQk" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="50" id="BFh-BN-cpm"/>
+                            <constraint firstItem="rOa-7t-caR" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="-111.5" id="Bof-uU-zg3"/>
+                            <constraint firstItem="pAO-Ye-XeM" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="FXc-Xe-7Vv"/>
+                            <constraint firstItem="HDS-jI-s4A" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="M1R-Bf-YB4"/>
+                            <constraint firstItem="rSI-dv-rFK" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="QBF-Lh-1Zg"/>
+                            <constraint firstItem="rSI-dv-rFK" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="-80" id="SZ0-uk-XRO"/>
+                            <constraint firstItem="rOa-7t-caR" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="U2G-bV-4IX"/>
+                            <constraint firstItem="Wsc-zV-O1M" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" constant="1" id="Y8g-QD-YLH"/>
+                            <constraint firstItem="pAO-Ye-XeM" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="-17" id="aRw-ak-UvA"/>
+                            <constraint firstItem="GVJ-UM-8ty" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="46" id="c39-wX-KuA"/>
+                            <constraint firstItem="GVJ-UM-8ty" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="eLH-v6-4W5"/>
+                            <constraint firstItem="hsb-OY-fQk" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" constant="-37.5" id="gJo-SH-Ocb"/>
+                            <constraint firstItem="424-Pf-6sT" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="hAZ-nG-FSQ"/>
+                            <constraint firstItem="HDS-jI-s4A" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="109" id="hxl-xW-7Xg"/>
+                            <constraint firstItem="Wsc-zV-O1M" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="-145" id="iQt-Fk-WsV"/>
+                            <constraint firstItem="rvG-0Q-41I" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" constant="72.5" id="jww-Jx-6BO"/>
+                            <constraint firstItem="rvG-0Q-41I" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="50" id="lGL-Ex-Els"/>
+                            <constraint firstItem="a3h-Sz-H7V" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="30" id="qKb-n1-4DJ"/>
+                            <constraint firstItem="jou-mt-R2U" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="t3o-4Y-PVk"/>
+                            <constraint firstItem="jou-mt-R2U" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="-48.5" id="tkw-ev-fMs"/>
+                            <constraint firstItem="CP5-51-fcY" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="uyr-pW-HdE"/>
+                            <constraint firstItem="CP5-51-fcY" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="14.5" id="xhu-UE-px6"/>
+                            <constraint firstItem="a3h-Sz-H7V" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="yNT-Qq-PZi"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Your Stats" image="second" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="averageWastedTimeInDayLabel" destination="CP5-51-fcY" id="dRM-4f-yCh"/>
+                        <outlet property="averageWastedTimeInUseLabel" destination="rOa-7t-caR" id="eF8-kf-vPI"/>
+                        <outlet property="currentlyWastedTimeLabel" destination="rvG-0Q-41I" id="UU1-Fp-Pvj"/>
+                        <outlet property="maxWastedTimeInDayLabel" destination="CN2-Y1-Wgi" id="sNr-3a-Etd"/>
+                        <outlet property="maxWastedTimeInUseLabel" destination="jou-mt-R2U" id="iVS-UR-FUK"/>
+                        <outlet property="totalWastedTimeLabel" destination="424-Pf-6sT" id="gbd-cY-eZJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400" y="340"/>
+        </scene>
+        <!--Money waste-->
+        <scene sceneID="M1C-VN-xLG">
+            <objects>
+                <viewController id="o5I-Og-13s" userLabel="Money waste" customClass="MoneyWasteViewController" customModule="BigMT" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tEb-rH-msn"/>
+                        <viewControllerLayoutGuide type="bottom" id="M8V-rP-Fij"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KLJ-75-NeN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Money Waster" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjm-6g-MU6">
+                                <rect key="frame" x="111" y="30" width="99" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEe-an-LZX">
+                                <rect key="frame" x="54" y="50" width="137" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmY-uC-6Jf">
+                                <rect key="frame" x="199" y="50" width="67" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Cjm-6g-MU6" firstAttribute="top" secondItem="KLJ-75-NeN" secondAttribute="top" constant="30" id="0li-9M-SwN"/>
+                            <constraint firstItem="zmY-uC-6Jf" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" constant="72.5" id="4oe-Xb-xhM"/>
+                            <constraint firstItem="QEe-an-LZX" firstAttribute="top" secondItem="KLJ-75-NeN" secondAttribute="top" constant="50" id="OUk-J4-LBL"/>
+                            <constraint firstItem="QEe-an-LZX" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" constant="-37.5" id="QyJ-Ba-j8l"/>
+                            <constraint firstItem="Cjm-6g-MU6" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" id="ZsL-bu-mIq"/>
+                            <constraint firstItem="zmY-uC-6Jf" firstAttribute="top" secondItem="KLJ-75-NeN" secondAttribute="top" constant="50" id="dOt-MK-2kx"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Money Waster" id="D1P-35-Qn2"/>
+                    <connections>
+                        <outlet property="currentlyWastedTimeLabel" destination="zmY-uC-6Jf" id="qPJ-8s-oSV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="16h-YS-JtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="779" y="340"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="I7t-Ml-bhx" kind="relationship" relationship="viewControllers" id="vgV-2p-tpC"/>
+                        <segue destination="o5I-Og-13s" kind="relationship" relationship="viewControllers" id="9Xy-S1-vxt"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
+    </resources>
+</document>
