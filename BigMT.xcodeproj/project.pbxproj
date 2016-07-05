@@ -19,6 +19,7 @@
 		8E57A9001D1B265F00F59D69 /* GlobalStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57A8FF1D1B265F00F59D69 /* GlobalStatsViewController.swift */; };
 		8E5B31771D18BC3B00057B01 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5B31761D18BC3B00057B01 /* AppData.swift */; };
 		8EAA25F11D146DDC000C7346 /* GlobalStopWatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA25F01D146DDC000C7346 /* GlobalStopWatches.swift */; };
+		8EBCD0301D2BE91E0026223B /* IAPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBCD02F1D2BE91E0026223B /* IAPViewController.swift */; };
 		8EFAB03E1D118CEB00666DA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFAB03D1D118CEB00666DA6 /* AppDelegate.swift */; };
 		8EFAB0401D118CEB00666DA6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFAB03F1D118CEB00666DA6 /* MainViewController.swift */; };
 		8EFAB0421D118CEB00666DA6 /* LocalStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFAB0411D118CEB00666DA6 /* LocalStatsViewController.swift */; };
@@ -43,6 +44,7 @@
 		8E57A8FF1D1B265F00F59D69 /* GlobalStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalStatsViewController.swift; sourceTree = "<group>"; };
 		8E5B31761D18BC3B00057B01 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		8EAA25F01D146DDC000C7346 /* GlobalStopWatches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalStopWatches.swift; sourceTree = "<group>"; };
+		8EBCD02F1D2BE91E0026223B /* IAPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPViewController.swift; sourceTree = "<group>"; };
 		8EFAB03A1D118CEB00666DA6 /* BigMT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigMT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFAB03D1D118CEB00666DA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EFAB03F1D118CEB00666DA6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				8EFAB0411D118CEB00666DA6 /* LocalStatsViewController.swift */,
 				8E57A8FF1D1B265F00F59D69 /* GlobalStatsViewController.swift */,
 				8E1BA7411D1CA9080015B271 /* MoneyWasteViewController.swift */,
+				8EBCD02F1D2BE91E0026223B /* IAPViewController.swift */,
 				8EFAB0431D118CEB00666DA6 /* Main.storyboard */,
 				8EFAB0481D118CEC00666DA6 /* LaunchScreen.storyboard */,
 				8EFAB04B1D118CEC00666DA6 /* Info.plist */,
@@ -204,6 +207,7 @@
 				8EFAB0401D118CEB00666DA6 /* MainViewController.swift in Sources */,
 				8E0EFBED1D2329E70039EDE9 /* BigMTProducts.swift in Sources */,
 				8E57A9001D1B265F00F59D69 /* GlobalStatsViewController.swift in Sources */,
+				8EBCD0301D2BE91E0026223B /* IAPViewController.swift in Sources */,
 				8EAA25F11D146DDC000C7346 /* GlobalStopWatches.swift in Sources */,
 				8EFAB0521D11A01500666DA6 /* DataModel.swift in Sources */,
 				8E0EFBEF1D2330B70039EDE9 /* IAPHelper.swift in Sources */,

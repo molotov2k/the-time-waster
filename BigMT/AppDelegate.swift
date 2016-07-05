@@ -17,25 +17,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var saved = false
     var savedInCloud = false
     var appIsActive = false
+    var notificationsEnabled = false
     
     var internetConnectionAvailable = false {
         didSet {
-            if internetConnectionAvailable != oldValue {
-                if !oldValue {
-                    print("Internet Connection status changed to true!")
-                    if saved && !savedInCloud {
-                        CloudKitHelper().UpdateAll()
-                        savedInCloud = true
-                    }
-                    if appIsActive {
-                        CloudKitHelper().loadAll() // will it auto update if new values are available?
-                    }
-                    
-                    let userDefaults = NSUserDefaults.standardUserDefaults() // should refactor
-                    if !userDefaults.boolForKey("Launched Before") {
-                        DataModel().handleFirstTime()
-                    }
-                    
+            if internetConnectionAvailable {
+                print("Internet Connection status changed to true!")
+                
+                if saved && !savedInCloud {
+                    CloudKitHelper().UpdateAll()
+                    savedInCloud = true
+                }
+                
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                if !userDefaults.boolForKey("Launched Before") {
+                    CloudKitHelper().handleFirstTime()
+                }
+                
+                if appIsActive && !notificationsEnabled && !AppData.userID.isEmpty {
+                    CloudKitHelper().loadAll()
                 }
             }
         }
@@ -116,6 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("register for notifications successfull!")
+        notificationsEnabled = true
     }
     
     func applicationWillResignActive(application: UIApplication) {

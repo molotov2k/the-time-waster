@@ -14,7 +14,7 @@ class AppData: NSObject {
     static var newUser = false
     
     static var lastSyncedData = [String: Double]()
-    static var tmpData = [String: Double]()
+    static var tmpData = [String: Double]() // only exists when resolving user private data confict
     
     static var lastUserPrivateDataUpdateTime = NSDate()
     static var lastMasterGlobalDataUpdateTime = NSDate()

@@ -26,22 +26,19 @@ class CloudKitHelper {
     }
     
     func UpdateAll() {
-//        let firstFetch = CKFetchRecordsOperation()
-//        let secondFetch = CKFetchRecordsOperation()
-//        secondFetch.addDependency(firstFetch)
-//        
-//        let queue = NSOperationQueue()
-//        queue.addOperations([firstFetch,secondFetch], waitUntilFinished: false)
-
         self.updateUserPrivateData()
         self.updateMasterGlobalData()
     }
     
-    func getUserID() {
+    func handleFirstTime() {
         container.fetchUserRecordIDWithCompletionHandler({
             id, error in
             if error == nil {
                 AppData.userID = String(id!.recordName.characters.dropFirst())
+                self.saveUserPrivateData()
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                userDefaults.setBool(true, forKey: "Launched Before")
+                userDefaults.setValue(AppData.userID, forKey: "UserID")
             } else {
                 print("ERROR in Get UserID, error \(error?.localizedDescription)")
             }
@@ -107,6 +104,9 @@ class CloudKitHelper {
                     print("*** Saving error occurred in \(fetchError.localizedDescription) ***")
                 } else {
                     AppData.newUser = true
+                    self.subscribeToUserPrivateDataUpdates() // part of handling the first time
+                    self.subscribeToMasterGlobalDataUpdates()
+                    // do I need both subscriptions for every user?
                     print("User Private Data saved successfully!")
                 }
         })

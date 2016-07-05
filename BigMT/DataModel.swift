@@ -18,25 +18,14 @@ class DataModel {
         
         if !userDefaults.boolForKey("Launched Before") {
             print("DataModel - loadUserDefaults - First time!")
-            handleFirstTime()
+            if !userDefaults.boolForKey("Core Data Record Created") {
+                CoreDataHelper().createInitialCoreDataRecord()
+                userDefaults.setBool(true, forKey:"Core Data Record Created")
+            }
+            CloudKitHelper().handleFirstTime()
         } else {
             AppData.userID = userDefaults.valueForKey("UserID") as! String
             print("DataModel - loadUserDefaults - Not the first time!")
-        }
-    }
-    
-    func handleFirstTime() {
-        CoreDataHelper().createInitialCoreDataRecord()
-        
-        if AppDelegate().internetConnectionAvailable {
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            CloudKitHelper().getUserID()
-            while AppData.userID == "" {}
-            CloudKitHelper().saveUserPrivateData()
-            CloudKitHelper().subscribeToMasterGlobalDataUpdates() // Do I need this for each user or existing one is good for all?
-            CloudKitHelper().subscribeToUserPrivateDataUpdates() // Do I need this for each user or existing one is good for all?
-            userDefaults.setValue(AppData.userID, forKey: "UserID")
-            userDefaults.setBool(true, forKey: "Launched Before")
         }
     }
     

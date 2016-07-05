@@ -384,6 +384,56 @@
             </objects>
             <point key="canvasLocation" x="779" y="340"/>
         </scene>
+        <!--Store-->
+        <scene sceneID="Upf-m8-1qi">
+            <objects>
+                <viewController id="Ufg-Sh-dpA" customClass="IAPViewController" customModule="BigMT" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CAg-pF-0qc"/>
+                        <viewControllerLayoutGuide type="bottom" id="RGg-MC-htt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rl7-tB-Djx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waste Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stc-LN-mZv">
+                                <rect key="frame" x="118" y="30" width="84" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rug-ud-Vea">
+                                <rect key="frame" x="54" y="50" width="137" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQX-DI-LNE">
+                                <rect key="frame" x="199" y="50" width="67" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rug-ud-Vea" firstAttribute="centerX" secondItem="rl7-tB-Djx" secondAttribute="centerX" constant="-37.5" id="3He-Po-hfa"/>
+                            <constraint firstItem="eQX-DI-LNE" firstAttribute="top" secondItem="rl7-tB-Djx" secondAttribute="top" constant="50" id="ENR-Fv-jKI"/>
+                            <constraint firstItem="eQX-DI-LNE" firstAttribute="centerX" secondItem="rl7-tB-Djx" secondAttribute="centerX" constant="72.5" id="dkQ-7F-z3h"/>
+                            <constraint firstItem="Stc-LN-mZv" firstAttribute="top" secondItem="rl7-tB-Djx" secondAttribute="top" constant="30" id="l6y-XZ-I0l"/>
+                            <constraint firstItem="Rug-ud-Vea" firstAttribute="top" secondItem="rl7-tB-Djx" secondAttribute="top" constant="50" id="tJa-bz-nag"/>
+                            <constraint firstItem="Stc-LN-mZv" firstAttribute="centerX" secondItem="rl7-tB-Djx" secondAttribute="centerX" id="uIz-SN-lGH"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Store" id="MHY-WQ-g0B"/>
+                    <connections>
+                        <outlet property="currentlyWastedTimeLabel" destination="eQX-DI-LNE" id="qm8-ER-Kq3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xkk-1M-zxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1161" y="340"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -399,6 +449,7 @@
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="I7t-Ml-bhx" kind="relationship" relationship="viewControllers" id="vgV-2p-tpC"/>
                         <segue destination="o5I-Og-13s" kind="relationship" relationship="viewControllers" id="9Xy-S1-vxt"/>
+                        <segue destination="Ufg-Sh-dpA" kind="relationship" relationship="viewControllers" id="Vs5-Z1-tJo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
