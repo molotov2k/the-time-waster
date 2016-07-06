@@ -11,8 +11,6 @@
 		39A4F14C1D16DBBD00AC1B55 /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A4F14B1D16DBBD00AC1B55 /* CloudKitHelper.swift */; };
 		8E0EFBE91D21CF750039EDE9 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0EFBE81D21CF750039EDE9 /* Reachability.swift */; };
 		8E0EFBEB1D2328C80039EDE9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0EFBEA1D2328C80039EDE9 /* StoreKit.framework */; };
-		8E0EFBED1D2329E70039EDE9 /* BigMTProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0EFBEC1D2329E70039EDE9 /* BigMTProducts.swift */; };
-		8E0EFBEF1D2330B70039EDE9 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0EFBEE1D2330B70039EDE9 /* IAPHelper.swift */; };
 		8E1BA7421D1CA9080015B271 /* MoneyWasteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA7411D1CA9080015B271 /* MoneyWasteViewController.swift */; };
 		8E1BA7691D1D8C680015B271 /* BigMT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA7671D1D8C680015B271 /* BigMT.xcdatamodeld */; };
 		8E1BA76B1D1DB6FC0015B271 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA76A1D1DB6FC0015B271 /* CoreDataHelper.swift */; };
@@ -36,8 +34,6 @@
 		39A4F14B1D16DBBD00AC1B55 /* CloudKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		8E0EFBE81D21CF750039EDE9 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		8E0EFBEA1D2328C80039EDE9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		8E0EFBEC1D2329E70039EDE9 /* BigMTProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigMTProducts.swift; sourceTree = "<group>"; };
-		8E0EFBEE1D2330B70039EDE9 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		8E1BA7411D1CA9080015B271 /* MoneyWasteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyWasteViewController.swift; sourceTree = "<group>"; };
 		8E1BA7681D1D8C680015B271 /* BigMT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BigMT.xcdatamodel; sourceTree = "<group>"; };
 		8E1BA76A1D1DB6FC0015B271 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
@@ -95,10 +91,8 @@
 				8EFAB03D1D118CEB00666DA6 /* AppDelegate.swift */,
 				39A4F14B1D16DBBD00AC1B55 /* CloudKitHelper.swift */,
 				8E1BA76A1D1DB6FC0015B271 /* CoreDataHelper.swift */,
-				8E0EFBEE1D2330B70039EDE9 /* IAPHelper.swift */,
 				8EFAB0511D11A01500666DA6 /* DataModel.swift */,
 				8E5B31761D18BC3B00057B01 /* AppData.swift */,
-				8E0EFBEC1D2329E70039EDE9 /* BigMTProducts.swift */,
 				8E0EFBE81D21CF750039EDE9 /* Reachability.swift */,
 				8EFAB0531D11A12800666DA6 /* StopWatch.swift */,
 				8EAA25F01D146DDC000C7346 /* GlobalStopWatches.swift */,
@@ -205,12 +199,10 @@
 				8E1BA76B1D1DB6FC0015B271 /* CoreDataHelper.swift in Sources */,
 				39A4F14C1D16DBBD00AC1B55 /* CloudKitHelper.swift in Sources */,
 				8EFAB0401D118CEB00666DA6 /* MainViewController.swift in Sources */,
-				8E0EFBED1D2329E70039EDE9 /* BigMTProducts.swift in Sources */,
 				8E57A9001D1B265F00F59D69 /* GlobalStatsViewController.swift in Sources */,
 				8EBCD0301D2BE91E0026223B /* IAPViewController.swift in Sources */,
 				8EAA25F11D146DDC000C7346 /* GlobalStopWatches.swift in Sources */,
 				8EFAB0521D11A01500666DA6 /* DataModel.swift in Sources */,
-				8E0EFBEF1D2330B70039EDE9 /* IAPHelper.swift in Sources */,
 				8E0EFBE91D21CF750039EDE9 /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,13 +319,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BigMT/BigMT.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Max Tkach (44B6K99V78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Max Tkach (44B6K99V78)";
 				INFOPLIST_FILE = BigMT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anvil.BigMT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "954b8b07-1fe3-4f58-859d-c26541fdd60c";
 			};
 			name = Debug;
 		};
@@ -342,13 +334,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BigMT/BigMT.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Max Tkach (44B6K99V78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Max Tkach (44B6K99V78)";
 				INFOPLIST_FILE = BigMT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anvil.BigMT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "954b8b07-1fe3-4f58-859d-c26541fdd60c";
 			};
 			name = Release;
 		};

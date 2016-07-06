@@ -7,14 +7,25 @@
 //
 
 import UIKit
+import StoreKit
 
-class IAPViewController: UIViewController, UITabBarDelegate {
+class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate {
     
     @IBOutlet weak var currentlyWastedTimeLabel: UILabel!
+    @IBOutlet weak var productsTableView: UITableView!
+    
+    var productsArray: [SKProduct] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        productsTableView.delegate = self
+        productsTableView.dataSource = self
+        productsTableView.tableFooterView = UIView()
+        requestProductInfo()
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -55,5 +66,57 @@ class IAPViewController: UIViewController, UITabBarDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    
+// MARK: IAP method implementation
+    
+    func requestProductInfo() {
+        if SKPaymentQueue.canMakePayments() {
+            let productIdentifiers = Set(AppData.inAppPurchaseIDs)
+            let productRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
+            productRequest.delegate = self
+            productRequest.start()
+        } else {
+            print("Cannot perform In App Purchases.")
+        }
+    }
+    
+    func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+        if response.products.count != 0 {
+            for product in response.products {
+                productsArray.append(product)
+            }
+            productsTableView.reloadData()
+        } else {
+            print("No products found")
+        }
+        
+        if response.invalidProductIdentifiers.count != 0 {
+            print(response.invalidProductIdentifiers.description)
+        }
+    }
+    
+    
+// MARK: TableView method implementation
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return productsArray.count
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60.0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("IAPCell", forIndexPath: indexPath)
+        let product = productsArray[indexPath.row]
+        cell.textLabel!.text = product.localizedTitle
+        cell.detailTextLabel!.text = product.localizedDescription
+        cell.detailTextLabel!.textColor = UIColor.grayColor()
+        return cell
+    }
     
 }

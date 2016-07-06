@@ -76,7 +76,7 @@ class CoreDataHelper {
         } catch let error as NSError {
             print("CoreData loading error: \(error.localizedDescription)")
         }
-        print("CoreData - Load successfull!")
+        print("CoreData - Loaded successfully!")
     }
     
     

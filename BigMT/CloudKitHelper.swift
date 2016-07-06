@@ -13,11 +13,13 @@ class CloudKitHelper {
     var container: CKContainer
     var userPrivateData: CKDatabase
     var masterGlobalData: CKDatabase
+    var inAppPurchasesData: CKDatabase
     
     init() {
         container = CKContainer.defaultContainer()
         userPrivateData = container.privateCloudDatabase
         masterGlobalData = container.publicCloudDatabase
+        inAppPurchasesData = container.publicCloudDatabase
     }
     
     func loadAll() {
@@ -29,6 +31,7 @@ class CloudKitHelper {
         self.updateUserPrivateData()
         self.updateMasterGlobalData()
     }
+    
     
     func handleFirstTime() {
         container.fetchUserRecordIDWithCompletionHandler({
@@ -66,7 +69,7 @@ class CloudKitHelper {
                         }
                         DataModel().resolveUserPrivateDataConflict()
                     }
-                    print("UserData - Load successfull!")
+                    print("CloudKit - UserPrivateData loaded successfully!")
                 }
             }
         }
@@ -85,9 +88,31 @@ class CloudKitHelper {
                     for (key, _) in AppData.masterGlobalData {
                         AppData.masterGlobalData[key] = result[key] as? Double
                     }
-                    print("MastedData - Load successfull!")
+                    print("CloudKit - MastedGlobalData loaded successfully!")
                 }
             }
+        }
+    }
+    
+    
+    func loadInAppPurchasesData() {
+        let predicate = NSPredicate.init(value: true)
+        let query = CKQuery.init(recordType: "inAppPurchases", predicate: predicate)
+        
+        inAppPurchasesData.performQuery(query, inZoneWithID: nil)
+        { records, error in
+            if error != nil {
+                print("ERROR in Load InAppPurchases Data, error \(error?.localizedDescription)")
+            } else {
+                if let records = records {
+                    for record in records {
+                        AppData.inAppPurchaseIDs.append(record["name"] as! String)
+                    }
+                    AppData.inAppPurchaseIDs.sortInPlace()
+                    print("CloudKit - InAppPurchases loaded successfully!")
+                }
+            }
+            
         }
     }
     

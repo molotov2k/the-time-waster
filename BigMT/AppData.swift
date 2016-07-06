@@ -19,6 +19,7 @@ class AppData: NSObject {
     static var lastUserPrivateDataUpdateTime = NSDate()
     static var lastMasterGlobalDataUpdateTime = NSDate()
     
+    static var inAppPurchaseIDs = [String]()
     
     static var userPrivateData = ["averageWasteInDay": 0.0,
                                   "averageWasteInUse": 0.0,

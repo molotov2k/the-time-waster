@@ -18,11 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var savedInCloud = false
     var appIsActive = false
     var notificationsEnabled = false
+    var inAppPurchasesLoaded = false
     
     var internetConnectionAvailable = false {
         didSet {
             if internetConnectionAvailable {
                 print("Internet Connection status changed to true!")
+                
+                if !inAppPurchasesLoaded && appIsActive {
+                    CloudKitHelper().loadInAppPurchasesData()
+                    inAppPurchasesLoaded = true
+                }
                 
                 if saved && !savedInCloud {
                     CloudKitHelper().UpdateAll()
@@ -52,6 +58,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Reachability().trackConnectionStatus()
 
         return true
+    }
+    
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        resetWastedTimeStopWatch()
+        startStopWatches()
+        
+        if internetConnectionAvailable {
+            CloudKitHelper().loadAll()
+            CloudKitHelper().loadInAppPurchasesData()
+        } else {
+            CoreDataHelper().loadCoreDataValues()
+        }
+        
+        saved = false
+        savedInCloud = false
+        inAppPurchasesLoaded = false
+        appIsActive = true
     }
     
 
@@ -115,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        print("register for notifications successfull!")
+        print("Registered for notifications successfully!")
         notificationsEnabled = true
     }
     
@@ -129,22 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveData()
         appIsActive = false
     }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        resetWastedTimeStopWatch()
-        startStopWatches()
-        
-        if internetConnectionAvailable {
-            CloudKitHelper().loadAll()
-        } else {
-            CoreDataHelper().loadCoreDataValues()
-        }
-        
-        saved = false
-        savedInCloud = false
-        appIsActive = true
-    }
-
+    
     func applicationWillTerminate(application: UIApplication) {
         saveData()
     }
@@ -173,15 +182,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             CoreDataHelper().updateCoreDataValues("UserPrivateData")
             CoreDataHelper().updateCoreDataValues("MasterGlobalData")
             
-            if internetConnectionAvailable {
+            if internetConnectionAvailable && !AppData.userID.isEmpty {
                 CloudKitHelper().UpdateAll()
-                savedInCloud = true
-            } else {
                 AppData.lastSyncedData = AppData.userPrivateData
                 CoreDataHelper().updateCoreDataValues("LastSyncedData")
+                savedInCloud = true
+                // check notifications and conflict solving on actual device, something is terribly wrong
+            } else {
+                saved = true
             }
-            
-            saved = true
         }
     }
     

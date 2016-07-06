@@ -117,7 +117,7 @@ class DataModel {
     
 //# MARK: - User Private Data Conflict Handling
     func resolveUserPrivateDataConflict() {
-        
+        print("Resolving Conficts")
         AppData.userPrivateData["totalWaste"]! += AppData.tmpData["totalWaste"]! - AppData.lastSyncedData["totalWaste"]!
         AppData.userPrivateData["numberOfWastes"]! += AppData.tmpData["numberOfWastes"]! - AppData.lastSyncedData["numberOfWastes"]!
         AppData.userPrivateData["currentDay"] = max(AppData.tmpData["currentDay"]!, AppData.userPrivateData["currentDay"]!)
