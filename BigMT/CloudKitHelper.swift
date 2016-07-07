@@ -42,6 +42,7 @@ class CloudKitHelper {
                 let userDefaults = NSUserDefaults.standardUserDefaults()
                 userDefaults.setBool(true, forKey: "Launched Before")
                 userDefaults.setValue(AppData.userID, forKey: "UserID")
+                self.loadAll()
             } else {
                 print("ERROR in Get UserID, error \(error?.localizedDescription)")
             }
@@ -69,6 +70,8 @@ class CloudKitHelper {
                         }
                         DataModel().resolveUserPrivateDataConflict()
                     }
+                    AppData.userPrivateUpdateID = AppData.userPrivateData["updateID"]!
+                    AppData.userPrivateData["updateID"] = Double(arc4random())
                     print("CloudKit - UserPrivateData loaded successfully!")
                 }
             }
@@ -106,9 +109,9 @@ class CloudKitHelper {
             } else {
                 if let records = records {
                     for record in records {
-                        AppData.inAppPurchaseIDs.append(record["name"] as! String)
+                        let recordValue: Double = record["wm_value"] as! Double
+                        AppData.inAppPurchaseIDs[record["name"] as! String] = recordValue
                     }
-                    AppData.inAppPurchaseIDs.sortInPlace()
                     print("CloudKit - InAppPurchases loaded successfully!")
                 }
             }
@@ -146,11 +149,10 @@ class CloudKitHelper {
                 print("ERROR during loading in Update User Private Data, error \(error?.localizedDescription)")
                 return
             }
-            if AppData.userPrivateData["updateID"] == fetchedData["updateID"] as? Double {
+            if AppData.userPrivateUpdateID == fetchedData["updateID"] as? Double {
                 for (key, value) in AppData.userPrivateData {
                     fetchedData[key] = value
                 }
-                AppData.userPrivateData["updateID"] = Double(arc4random())
             } else {
                 AppData.tmpData = AppData.userPrivateData
                 for (key, _) in AppData.userPrivateData {
@@ -171,6 +173,38 @@ class CloudKitHelper {
     }
     
     
+    func updateUserWastedMoney() {
+        let recordID = CKRecordID.init(recordName: AppData.userID)
+        userPrivateData.fetchRecordWithID(recordID)
+        { fetchedData, error in
+            guard let fetchedData = fetchedData else {
+                print("ERROR during Update User Wasted Money, error \(error?.localizedDescription)")
+                return
+            }
+            if AppData.userPrivateUpdateID == fetchedData["updateID"] as? Double {
+                AppData.userPrivateUpdateID = AppData.userPrivateData["updateID"]!
+                AppData.userPrivateData["updateID"] = Double(arc4random())
+                fetchedData["moneyWasted"] = AppData.userPrivateData["moneyWasted"]
+            } else {
+                AppData.tmpData = AppData.userPrivateData
+                for (key, _) in AppData.userPrivateData {
+                    AppData.userPrivateData[key] = fetchedData[key] as? Double
+                }
+                DataModel().resolveUserPrivateDataConflict()
+                self.updateUserWastedMoney()
+            }
+            self.userPrivateData.saveRecord(fetchedData)
+            { savedData, error in
+                if (error != nil) {
+                    print("ERROR during saving in Update User Wasted Money, error \(error?.localizedDescription)")
+                } else {
+                    print("CloudKit - User Wasted Money updated successfully")
+                }
+            }
+        }
+    }
+    
+    
     func updateMasterGlobalData() {
         let recordID = CKRecordID.init(recordName: "masterGlobal")
         masterGlobalData.fetchRecordWithID(recordID)
@@ -180,10 +214,40 @@ class CloudKitHelper {
                 return
             }
             if AppData.masterGlobalData["updateID"] == fetchedData["updateID"] as? Double {
+                AppData.masterGlobalData["updateID"] = Double(arc4random())
                 for (key, value) in AppData.masterGlobalData {
                     fetchedData[key] = value
                 }
+            } else {
+                self.loadMasterData()
+                self.updateMasterGlobalData()
+                return
+            }
+            self.masterGlobalData.saveRecord(fetchedData)
+            { savedData, error in
+                if (error != nil) {
+                    print("ERROR during saving in Update Master Global Data, error \(error?.localizedDescription)")
+                } else {
+                    print("CloudKit - MasterGlobalData updated successfully!")
+                }
+            }
+        }
+    }
+    
+    func updateMasterWastedMoney() {
+        let recordID = CKRecordID.init(recordName: "masterGlobal")
+        masterGlobalData.fetchRecordWithID(recordID)
+        { fetchedData, error in
+            guard let fetchedData = fetchedData else {
+                print("ERROR during loading in Update Master Global Data, error \(error?.localizedDescription)")
+                return
+            }
+            if AppData.masterGlobalData["updateID"] == fetchedData["updateID"] as? Double {
                 AppData.masterGlobalData["updateID"] = Double(arc4random())
+                DataModel().updateMasterWastedMoney()
+                for (key, value) in AppData.masterGlobalData {
+                    fetchedData[key] = value
+                }
             } else {
                 self.loadMasterData()
                 self.updateMasterGlobalData()

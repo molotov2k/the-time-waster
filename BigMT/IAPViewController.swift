@@ -9,23 +9,22 @@
 import UIKit
 import StoreKit
 
-class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate {
+class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     @IBOutlet weak var currentlyWastedTimeLabel: UILabel!
     @IBOutlet weak var productsTableView: UITableView!
     
     var productsArray: [SKProduct] = []
-    
+    var productIDs: [String] = []
+    var selectedProductIndex: Int!
+    var transactionInProgress = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        productsTableView.delegate = self
-        productsTableView.dataSource = self
-        productsTableView.tableFooterView = UIView()
+        productIDs = AppData.inAppPurchaseIDs.keys.sort()
+        setTableViewPreferences()
         requestProductInfo()
-        
-        
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -71,7 +70,7 @@ class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate
     
     func requestProductInfo() {
         if SKPaymentQueue.canMakePayments() {
-            let productIdentifiers = Set(AppData.inAppPurchaseIDs)
+            let productIdentifiers = Set(productIDs)
             let productRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
             productRequest.delegate = self
             productRequest.start()
@@ -95,8 +94,71 @@ class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate
         }
     }
     
+    func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            switch transaction.transactionState {
+                
+            case SKPaymentTransactionState.Purchased:
+                SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                transactionInProgress = false
+                let purchasedItem = productIDs[selectedProductIndex]
+                let purchaseAmount = AppData.inAppPurchaseIDs[purchasedItem]
+                if AppData.userPrivateData["moneyWasted"] == 0 {
+                    AppData.masterGlobalData["numberOfPaidUsers"]! += 1
+                }
+                AppData.userPrivateData["moneyWasted"]! += purchaseAmount!
+                AppData.thisSessionMoneyWaste += purchaseAmount!
+                CloudKitHelper().updateUserWastedMoney()
+                CoreDataHelper().updateCoreDataValues("userPrivateData")
+                print("Payment transaction completed successfully!")
+                
+            case SKPaymentTransactionState.Failed:
+                SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                transactionInProgress = false
+                print("Payment transaction failed!")
+                
+            default:
+                print(transaction.transactionState.rawValue) // remove
+                
+            }
+        }
+    }
+    
+    func showActions() {
+        if transactionInProgress {
+            return
+        }
+        
+        let actionSheetController = UIAlertController(title: productsArray[selectedProductIndex].localizedTitle, message: "Proceed with purchase?", preferredStyle: UIAlertControllerStyle.Alert)
+        let buyAction = UIAlertAction(title: "Buy", style: UIAlertActionStyle.Default)
+        { (action) -> Void in
+            let payment = SKPayment(product: self.productsArray[self.selectedProductIndex])
+            SKPaymentQueue.defaultQueue().addPayment(payment)
+            self.transactionInProgress = true
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) {(action) -> Void in}
+        
+        actionSheetController.addAction(cancelAction)
+        actionSheetController.addAction(buyAction)
+        presentViewController(actionSheetController, animated: true, completion: nil)
+    }
+    
     
 // MARK: TableView method implementation
+    
+    func setTableViewPreferences() {
+        productsTableView.delegate = self
+        productsTableView.dataSource = self
+        productsTableView.tableFooterView = UIView.init(frame: CGRectMake(0, 0, productsTableView.contentSize.width, 1))
+        //productsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        if productsTableView.contentSize.height < productsTableView.frame.size.height {
+            productsTableView.scrollEnabled = false
+        } else {
+            productsTableView.scrollEnabled = true
+        }
+    }
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -117,6 +179,12 @@ class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate
         cell.detailTextLabel!.text = product.localizedDescription
         cell.detailTextLabel!.textColor = UIColor.grayColor()
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedProductIndex = indexPath.row
+        showActions()
+        tableView.cellForRowAtIndexPath(indexPath)?.selected = false
     }
     
 }

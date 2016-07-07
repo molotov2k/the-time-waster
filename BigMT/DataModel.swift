@@ -115,14 +115,32 @@ class DataModel {
     }
     
     
+    func updateMasterWastedMoney() {
+        
+        if AppData.masterGlobalData["maxMoneyWaste"] < AppData.userPrivateData["moneyWasted"] {
+            AppData.masterGlobalData["maxMoneyWaste"] = AppData.userPrivateData["moneyWasted"]
+        }
+        AppData.masterGlobalData["totalMoneyWaste"]! += AppData.thisSessionMoneyWaste
+        AppData.masterGlobalData["averageMoneyWaste"] = AppData.masterGlobalData["maxMoneyWaste"]! / AppData.masterGlobalData["numberOfPaidUsers"]!
+        
+    }
+    
+    
 //# MARK: - User Private Data Conflict Handling
+    
     func resolveUserPrivateDataConflict() {
         print("Resolving Conficts")
+        
+        AppData.userPrivateData["moneyWasted"]! += AppData.tmpData["moneyWasted"]! - AppData.lastSyncedData["moneyWasted"]!
         AppData.userPrivateData["totalWaste"]! += AppData.tmpData["totalWaste"]! - AppData.lastSyncedData["totalWaste"]!
         AppData.userPrivateData["numberOfWastes"]! += AppData.tmpData["numberOfWastes"]! - AppData.lastSyncedData["numberOfWastes"]!
         AppData.userPrivateData["currentDay"] = max(AppData.tmpData["currentDay"]!, AppData.userPrivateData["currentDay"]!)
         if AppData.userPrivateData["currentDay"] == AppData.tmpData["currentDay"] {
-            AppData.userPrivateData["currentDayWaste"]! += AppData.tmpData["currentDayWaste"]!
+            if AppData.userPrivateData["currentDay"] == AppData.lastSyncedData["currentDay"] {
+                AppData.userPrivateData["currentDayWaste"]! += AppData.tmpData["currentDayWaste"]! - AppData.lastSyncedData["currentDayWaste"]!
+            } else {
+                AppData.userPrivateData["currentDayWaste"]! += AppData.tmpData["currentDayWaste"]!
+            }
         }
         AppData.userPrivateData["numberOfDays"] = max(AppData.tmpData["numberOfDays"]!, AppData.lastSyncedData["numberOfDays"]!) // Will count wrong in some cases
         AppData.userPrivateData["maxWasteInDay"] = max(AppData.tmpData["maxWasteInDay"]!, AppData.userPrivateData["maxWasteInDay"]!)

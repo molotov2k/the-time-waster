@@ -13,6 +13,12 @@ class MoneyWasteViewController: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var currentlyWastedTimeLabel: UILabel!
     
+    @IBOutlet weak var userWastedMoneyLabel: UILabel!
+    @IBOutlet weak var averageWastedMoneyLabel: UILabel!
+    @IBOutlet weak var maxWastedMoneyLabel: UILabel!
+    @IBOutlet weak var totalWastedMoneyLabel: UILabel!
+    @IBOutlet weak var placeholderLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +28,25 @@ class MoneyWasteViewController: UIViewController, UITabBarDelegate {
         super.viewWillAppear(true)
         resetIdleTime()
         GlobalStopWatches.currentWastedTimeStopWatch.callback = self.tick
+        
+        if AppData.userPrivateData["moneyWasted"] < 100 {
+            placeholderLabel.hidden = false
+            totalWastedMoneyLabel.hidden = true
+        } else {
+            placeholderLabel.hidden = true
+            totalWastedMoneyLabel.hidden = false
+        }
+        
+        let textForUserWasteLabel = Int(AppData.userPrivateData["moneyWasted"]!)
+        let textForAverageWastedLabel = Int(AppData.masterGlobalData["averageMoneyWaste"]!)
+        let textForMaxWastedLabel = Int(AppData.masterGlobalData["maxMoneyWaste"]!)
+        let textForTotalWastedLabel = Int(AppData.masterGlobalData["totalMoneyWaste"]!)
+        
+        userWastedMoneyLabel.text = "\(textForUserWasteLabel) wm"
+        averageWastedMoneyLabel.text = "\(textForAverageWastedLabel) wm"
+        maxWastedMoneyLabel.text = "\(textForMaxWastedLabel) wm"
+        totalWastedMoneyLabel.text = "\(textForTotalWastedLabel) wm"
+        
     }
     
     func tick() {

@@ -364,20 +364,97 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Money you wasted:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNE-u5-q5j">
+                                <rect key="frame" x="91" y="192" width="141" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000 WM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24H-HS-lIF">
+                                <rect key="frame" x="110" y="222" width="100" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average money wasted:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5f-vI-nul">
+                                <rect key="frame" x="74" y="257" width="173" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000000000000 WM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uck-cL-jbM">
+                                <rect key="frame" x="49" y="285" width="223" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most money wasted:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxY-Yf-4cz">
+                                <rect key="frame" x="85" y="320" width="151" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000 WM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="582-8O-FCO">
+                                <rect key="frame" x="110" y="348" width="100" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total money wasted:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEn-Lf-ssC">
+                                <rect key="frame" x="85" y="383" width="150" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00000 WM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdV-EP-kUv">
+                                <rect key="frame" x="103" y="411" width="114" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unlocks after 100 wm waste" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pd7-MR-uKH">
+                                <rect key="frame" x="64" y="411" width="202" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Uck-cL-jbM" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" id="0Yp-jc-Xvv"/>
                             <constraint firstItem="Cjm-6g-MU6" firstAttribute="top" secondItem="KLJ-75-NeN" secondAttribute="top" constant="30" id="0li-9M-SwN"/>
+                            <constraint firstItem="Uck-cL-jbM" firstAttribute="centerY" secondItem="KLJ-75-NeN" secondAttribute="centerY" constant="14.5" id="3F8-WM-1aP"/>
                             <constraint firstItem="zmY-uC-6Jf" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" constant="72.5" id="4oe-Xb-xhM"/>
+                            <constraint firstItem="zNE-u5-q5j" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" constant="1" id="B39-Fi-Mh8"/>
+                            <constraint firstItem="cdV-EP-kUv" firstAttribute="centerY" secondItem="KLJ-75-NeN" secondAttribute="centerY" constant="140.5" id="Ben-cP-g9M"/>
+                            <constraint firstItem="zNE-u5-q5j" firstAttribute="centerY" secondItem="KLJ-75-NeN" secondAttribute="centerY" constant="-82" id="FhN-yp-Odt"/>
+                            <constraint firstItem="Pd7-MR-uKH" firstAttribute="centerY" secondItem="KLJ-75-NeN" secondAttribute="centerY" constant="137" id="HEy-uX-cDX"/>
+                            <constraint firstItem="AxY-Yf-4cz" firstAttribute="centerY" secondItem="KLJ-75-NeN" secondAttribute="centerY" constant="46" id="M4J-QR-oXN"/>
+                            <constraint firstItem="582-8O-FCO" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" id="MC3-1a-imv"/>
                             <constraint firstItem="QEe-an-LZX" firstAttribute="top" secondItem="KLJ-75-NeN" secondAttribute="top" constant="50" id="OUk-J4-LBL"/>
+                            <constraint firstItem="582-8O-FCO" firstAttribute="centerY" secondItem="KLJ-75-NeN" secondAttribute="centerY" constant="77.5" id="Qux-Eq-Lyh"/>
                             <constraint firstItem="QEe-an-LZX" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" constant="-37.5" id="QyJ-Ba-j8l"/>
+                            <constraint firstItem="AxY-Yf-4cz" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" id="S4c-eA-x21"/>
+                            <constraint firstItem="YEn-Lf-ssC" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" id="WKe-E9-mOL"/>
+                            <constraint firstItem="Pd7-MR-uKH" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" constant="5" id="Wow-gb-Fb1"/>
                             <constraint firstItem="Cjm-6g-MU6" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" id="ZsL-bu-mIq"/>
+                            <constraint firstItem="24H-HS-lIF" firstAttribute="centerY" secondItem="KLJ-75-NeN" secondAttribute="centerY" constant="-48.5" id="cYB-vp-sef"/>
+                            <constraint firstItem="cdV-EP-kUv" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" id="ceK-0a-yP1"/>
                             <constraint firstItem="zmY-uC-6Jf" firstAttribute="top" secondItem="KLJ-75-NeN" secondAttribute="top" constant="50" id="dOt-MK-2kx"/>
+                            <constraint firstItem="YEn-Lf-ssC" firstAttribute="centerY" secondItem="KLJ-75-NeN" secondAttribute="centerY" constant="109" id="liF-gm-yCO"/>
+                            <constraint firstItem="a5f-vI-nul" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" id="osi-n0-rWR"/>
+                            <constraint firstItem="24H-HS-lIF" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" id="q9U-v0-Ert"/>
+                            <constraint firstItem="a5f-vI-nul" firstAttribute="centerY" secondItem="KLJ-75-NeN" secondAttribute="centerY" constant="-17" id="uvf-v6-SbS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Money Waster" id="D1P-35-Qn2"/>
                     <connections>
+                        <outlet property="averageWastedMoneyLabel" destination="Uck-cL-jbM" id="CHU-pD-Ije"/>
                         <outlet property="currentlyWastedTimeLabel" destination="zmY-uC-6Jf" id="qPJ-8s-oSV"/>
+                        <outlet property="maxWastedMoneyLabel" destination="582-8O-FCO" id="agw-Xq-4P9"/>
+                        <outlet property="placeholderLabel" destination="Pd7-MR-uKH" id="vbn-kF-EjN"/>
+                        <outlet property="totalWastedMoneyLabel" destination="cdV-EP-kUv" id="Caj-ca-Efu"/>
+                        <outlet property="userWastedMoneyLabel" destination="24H-HS-lIF" id="6qP-EU-5nl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16h-YS-JtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -424,11 +501,11 @@
                                 <rect key="frame" x="0.0" y="118" width="320" height="401"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IAPCell" textLabel="A91-ol-8nm" detailTextLabel="Zwv-3j-7BJ" style="IBUITableViewCellStyleSubtitle" id="wDE-mE-JEQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="IAPCell" textLabel="A91-ol-8nm" detailTextLabel="Zwv-3j-7BJ" style="IBUITableViewCellStyleSubtitle" id="wDE-mE-JEQ">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wDE-mE-JEQ" id="thH-e2-kZH">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="A91-ol-8nm">

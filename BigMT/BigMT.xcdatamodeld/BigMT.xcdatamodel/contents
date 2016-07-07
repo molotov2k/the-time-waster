@@ -7,21 +7,26 @@
         <attribute name="currentDayWaste" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxWasteInDay" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxWasteInUse" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="moneyWasted" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="numberOfDays" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="numberOfWastes" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="totalWaste" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="updateID" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <entity name="MasterGlobalData" syncable="YES">
+        <attribute name="averageMoneyWaste" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="averageWasteInDay" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="averageWasteInUse" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="currentDay" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="maxMoneyWaste" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxTotalWasteByUser" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxWasteInDay" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxWasteInUse" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="numberOfDays" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="numberOfPaidUsers" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="numberOfUsers" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="numberOfWastes" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="totalMoneyWaste" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="totalWaste" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="updateID" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
@@ -32,14 +37,15 @@
         <attribute name="currentDayWaste" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxWasteInDay" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxWasteInUse" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="moneyWasted" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="numberOfDays" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="numberOfWastes" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="totalWaste" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="updateID" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MasterGlobalData" positionX="-54" positionY="-9" width="128" height="210"/>
-        <element name="UserPrivateData" positionX="-63" positionY="-18" width="128" height="195"/>
-        <element name="LastSyncedData" positionX="-54" positionY="72" width="128" height="195"/>
+        <element name="LastSyncedData" positionX="-54" positionY="72" width="128" height="210"/>
+        <element name="MasterGlobalData" positionX="-54" positionY="-9" width="128" height="270"/>
+        <element name="UserPrivateData" positionX="-63" positionY="-18" width="128" height="210"/>
     </elements>
 </model>

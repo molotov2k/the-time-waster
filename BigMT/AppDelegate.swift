@@ -31,8 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
                 if saved && !savedInCloud {
-                    CloudKitHelper().UpdateAll()
-                    savedInCloud = true
+                    saveDataInCloud()
                 }
                 
                 let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -181,17 +180,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DataModel().updateMasterGlobalDataValues()
             CoreDataHelper().updateCoreDataValues("UserPrivateData")
             CoreDataHelper().updateCoreDataValues("MasterGlobalData")
+            saved = true
             
             if internetConnectionAvailable && !AppData.userID.isEmpty {
-                CloudKitHelper().UpdateAll()
-                AppData.lastSyncedData = AppData.userPrivateData
-                CoreDataHelper().updateCoreDataValues("LastSyncedData")
-                savedInCloud = true
-                // check notifications and conflict solving on actual device, something is terribly wrong
-            } else {
-                saved = true
+                saveDataInCloud()
             }
         }
+    }
+    
+    func saveDataInCloud() {
+        CloudKitHelper().UpdateAll()
+        AppData.lastSyncedData = AppData.userPrivateData
+        CoreDataHelper().updateCoreDataValues("LastSyncedData")
+        savedInCloud = true
     }
     
     
