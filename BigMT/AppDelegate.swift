@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if internetConnectionAvailable {
                 print("Internet Connection status changed to true!")
                 
-                if !inAppPurchasesLoaded && appIsActive {
+                if !inAppPurchasesLoaded && appIsActive && !AppData.userID.isEmpty {
                     CloudKitHelper().loadInAppPurchasesData()
                     inAppPurchasesLoaded = true
                 }
@@ -63,13 +63,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         resetWastedTimeStopWatch()
         startStopWatches()
+        CoreDataHelper().loadCoreDataValues()
         
-        if internetConnectionAvailable {
-            CloudKitHelper().loadAll()
-            CloudKitHelper().loadInAppPurchasesData()
-        } else {
-            CoreDataHelper().loadCoreDataValues()
-        }
+//        if internetConnectionAvailable && !AppData.userID.isEmpty {
+//            CloudKitHelper().loadAll()
+//            CloudKitHelper().loadInAppPurchasesData()
+//        } else {
+//            CoreDataHelper().loadCoreDataValues()
+//        }
         
         saved = false
         savedInCloud = false

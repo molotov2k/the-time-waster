@@ -100,9 +100,14 @@ class DataModel {
             timeZoneFormatter.dateFormat = "yyyyMMdd"
             let appCurrentDayAsInt = Int(AppData.masterGlobalData["currentDay"]!)
             let appDate = timeZoneFormatter.dateFromString(String(format: "%lu", appCurrentDayAsInt))
-            let timeDifference = NSDate().timeIntervalSinceDate(appDate!)
-            AppData.masterGlobalData["currentDay"] = currentSystemDateAsDouble
-            AppData.masterGlobalData["numberOfDays"]! += Double(Int(timeDifference / 86400))
+            if let appDate = appDate {
+                let timeDifference = NSDate().timeIntervalSinceDate(appDate)
+                AppData.masterGlobalData["currentDay"] = currentSystemDateAsDouble
+                AppData.masterGlobalData["numberOfDays"]! += Double(Int(timeDifference / 86400))
+            } else {
+                AppData.masterGlobalData["currentDay"] = currentSystemDateAsDouble
+                AppData.masterGlobalData["numberOfDays"]! += 1
+            }
         }
         
         if AppData.newUser {
