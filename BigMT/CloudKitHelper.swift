@@ -8,12 +8,14 @@
 
 import Foundation
 import CloudKit
+import UIKit
 
 class CloudKitHelper {
     var container: CKContainer
     var userPrivateData: CKDatabase
     var masterGlobalData: CKDatabase
     var inAppPurchasesData: CKDatabase
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     init() {
         container = CKContainer.defaultContainer()
@@ -25,27 +27,39 @@ class CloudKitHelper {
     func loadAll() {
         self.loadPrivateData()
         self.loadMasterData()
+        self.loadInAppPurchasesData()
     }
     
-    func UpdateAll() {
-        self.updateUserPrivateData()
-        self.updateMasterGlobalData()
+    func UpdateAll(application: UIApplication) {
+        
+        application.beginBackgroundTaskWithExpirationHandler(nil)
+        
+        var globalBackgroundQueue: dispatch_queue_t {
+            return dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)
+        }
+
+        dispatch_barrier_async(globalBackgroundQueue) {
+            self.updateUserPrivateData()
+            dispatch_async(globalBackgroundQueue) {
+                self.updateMasterGlobalData()
+            }
+        }
     }
     
     
     func handleFirstTime() {
-        container.fetchUserRecordIDWithCompletionHandler({
-            id, error in
-            if error == nil {
-                AppData.userID = String(id!.recordName.characters.dropFirst())
-                self.saveUserPrivateData()
-                let userDefaults = NSUserDefaults.standardUserDefaults()
-                userDefaults.setBool(true, forKey: "Launched Before")
-                userDefaults.setValue(AppData.userID, forKey: "UserID")
-                self.loadAll()
-            } else {
-                print("ERROR in Get UserID, error \(error?.localizedDescription)")
-            }
+        container.fetchUserRecordIDWithCompletionHandler(
+            { id, error in
+                if error == nil {
+                    AppData.userID = String(id!.recordName.characters.dropFirst())
+                    self.saveUserPrivateData()
+                    let userDefaults = NSUserDefaults.standardUserDefaults()
+                    userDefaults.setBool(true, forKey: "Launched Before")
+                    userDefaults.setValue(AppData.userID, forKey: "UserID")
+                    self.loadAll()
+                } else {
+                    print("ERROR in Get UserID, error \(error?.localizedDescription)")
+                }
         })
     }
     
@@ -142,6 +156,7 @@ class CloudKitHelper {
     
     
     func updateUserPrivateData() {
+        appDelegate.updatingCloudUserData = true
         let recordID = CKRecordID.init(recordName: AppData.userID)
         userPrivateData.fetchRecordWithID(recordID)
         { fetchedData, error in
@@ -168,6 +183,7 @@ class CloudKitHelper {
                 } else {
                     print("CloudKit - UserPrivateData updated successfully!")
                 }
+                self.appDelegate.updatingCloudUserData = false
             }
         }
     }
@@ -206,6 +222,7 @@ class CloudKitHelper {
     
     
     func updateMasterGlobalData() {
+        appDelegate.updatingCloudMasterData = true
         let recordID = CKRecordID.init(recordName: "masterGlobal")
         masterGlobalData.fetchRecordWithID(recordID)
         { fetchedData, error in
@@ -230,9 +247,11 @@ class CloudKitHelper {
                 } else {
                     print("CloudKit - MasterGlobalData updated successfully!")
                 }
+                self.appDelegate.updatingCloudMasterData = false
             }
         }
     }
+    
     
     func updateMasterWastedMoney() {
         let recordID = CKRecordID.init(recordName: "masterGlobal")
@@ -295,17 +314,6 @@ class CloudKitHelper {
             }
         }
     }
-    
-    
-//    func errorUpdating(error: NSError) {
-//        let message = error.localizedDescription
-//        let alert = UIAlertController(title: "Error loading data", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-//        self.presentViewController(alert, animated: true, completion: nil)
-//    }
-    
-    
-    
     
     
 }

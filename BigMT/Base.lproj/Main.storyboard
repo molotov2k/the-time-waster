@@ -494,11 +494,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have money to waste as well" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hM-Qk-j72">
                                 <rect key="frame" x="42" y="80" width="237" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="obl-lE-Knz">
-                                <rect key="frame" x="0.0" y="118" width="320" height="401"/>
+                                <rect key="frame" x="0.0" y="128" width="320" height="391"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="IAPCell" textLabel="A91-ol-8nm" detailTextLabel="Zwv-3j-7BJ" style="IBUITableViewCellStyleSubtitle" id="wDE-mE-JEQ">
@@ -512,14 +512,14 @@
                                                     <rect key="frame" x="15" y="5" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zwv-3j-7BJ">
                                                     <rect key="frame" x="15" y="25" width="31" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -535,7 +535,7 @@
                             <constraint firstItem="3hM-Qk-j72" firstAttribute="centerX" secondItem="rl7-tB-Djx" secondAttribute="centerX" id="ALx-n9-9Aj"/>
                             <constraint firstItem="eQX-DI-LNE" firstAttribute="top" secondItem="rl7-tB-Djx" secondAttribute="top" constant="50" id="ENR-Fv-jKI"/>
                             <constraint firstItem="eQX-DI-LNE" firstAttribute="centerX" secondItem="rl7-tB-Djx" secondAttribute="centerX" constant="72.5" id="dkQ-7F-z3h"/>
-                            <constraint firstItem="obl-lE-Knz" firstAttribute="top" secondItem="3hM-Qk-j72" secondAttribute="bottom" constant="20" id="eRc-8Q-do1"/>
+                            <constraint firstItem="obl-lE-Knz" firstAttribute="top" secondItem="3hM-Qk-j72" secondAttribute="bottom" constant="30" id="eRc-8Q-do1"/>
                             <constraint firstAttribute="trailing" secondItem="obl-lE-Knz" secondAttribute="trailing" id="hR4-gG-LAo"/>
                             <constraint firstItem="3hM-Qk-j72" firstAttribute="top" secondItem="rl7-tB-Djx" secondAttribute="top" constant="80" id="kSw-gI-hxq"/>
                             <constraint firstItem="Stc-LN-mZv" firstAttribute="top" secondItem="rl7-tB-Djx" secondAttribute="top" constant="30" id="l6y-XZ-I0l"/>

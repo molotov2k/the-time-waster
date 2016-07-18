@@ -20,7 +20,7 @@ class StopWatch: NSObject {
         super.init()
         
         self.displayLink = CADisplayLink(target: self, selector: #selector(StopWatch.tick(_:)))
-        displayLink.paused = true;
+        displayLink.paused = true
         displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
         
         self.elapsedTime = 0.0
@@ -57,6 +57,7 @@ class StopWatch: NSObject {
     }
     
     func elapsedTimeAsString() -> String {
+        formatter.dateFormat = "HH : mm : ss"
         return formatter.stringFromDate(NSDate(timeIntervalSinceReferenceDate:elapsedTime))
     }
     

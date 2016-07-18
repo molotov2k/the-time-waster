@@ -18,7 +18,6 @@ public class Reachability {
         
         SCNetworkReachabilitySetCallback(reachability, { (_, flags, _) in
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            //print(flags)
             appDelegate.internetConnectionAvailable = flags.rawValue > 0
             }, &context)
         

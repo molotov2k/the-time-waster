@@ -144,7 +144,13 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 62Z8B753FR;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 							com.apple.iCloud = {

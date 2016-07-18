@@ -16,21 +16,26 @@ class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate
     
     var productsArray: [SKProduct] = []
     var productIDs: [String] = []
+    var productsLoaded = false
     var selectedProductIndex: Int!
     var transactionInProgress = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        productIDs = AppData.inAppPurchaseIDs.keys.sort()
-        setTableViewPreferences()
-        requestProductInfo()
-        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         resetIdleTime()
         GlobalStopWatches.currentWastedTimeStopWatch.callback = self.tick
+        
+        if !productsLoaded {
+            productIDs = AppData.inAppPurchaseIDs.keys.sort()
+            setTableViewPreferences()
+            requestProductInfo()
+            SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        }
     }
     
     func tick() {
@@ -84,6 +89,7 @@ class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate
             for product in response.products {
                 productsArray.append(product)
             }
+            productsLoaded = true
             productsTableView.reloadData()
         } else {
             print("No products found")
@@ -109,7 +115,7 @@ class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate
                 AppData.userPrivateData["moneyWasted"]! += purchaseAmount!
                 AppData.thisSessionMoneyWaste += purchaseAmount!
                 CloudKitHelper().updateUserWastedMoney()
-                CoreDataHelper().updateCoreDataValues("userPrivateData")
+                CoreDataHelper().updateCoreDataValues("UserPrivateData")
                 print("Payment transaction completed successfully!")
                 
             case SKPaymentTransactionState.Failed:

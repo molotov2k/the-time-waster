@@ -115,7 +115,7 @@ class DataModel {
             AppData.newUser = false
         }
         
-        AppData.masterGlobalData["averageWasteInDay"] = AppData.masterGlobalData["totalWaste"]! / AppData.masterGlobalData["numberOfDays"]! / AppData.masterGlobalData["numberOfUsers"]!
+        AppData.masterGlobalData["averageWasteInDay"] = (AppData.masterGlobalData["totalWaste"]! / AppData.masterGlobalData["numberOfDays"]!) / AppData.masterGlobalData["numberOfUsers"]!
         
     }
     

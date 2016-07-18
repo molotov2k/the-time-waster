@@ -16,31 +16,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var saved = false
     var savedInCloud = false
+    var shouldLoad = false
     var appIsActive = false
     var notificationsEnabled = false
-    var inAppPurchasesLoaded = false
+    var updatingCloudUserData = false
+    var updatingCloudMasterData = false
+    var cloudUpdatesInProgress: Bool {
+        get { return updatingCloudMasterData || updatingCloudUserData }
+    }
     
     var internetConnectionAvailable = false {
         didSet {
             if internetConnectionAvailable {
+                
                 print("Internet Connection status changed to true!")
                 
-                if !inAppPurchasesLoaded && appIsActive && !AppData.userID.isEmpty {
-                    CloudKitHelper().loadInAppPurchasesData()
-                    inAppPurchasesLoaded = true
+                if saved && !savedInCloud {
+                    saveDataInCloud(UIApplication.sharedApplication()) ///////// Test this
                 }
                 
-                if saved && !savedInCloud {
-                    saveDataInCloud()
+                if shouldLoad {
+                    CloudKitHelper().loadAll()
+                    shouldLoad = false
                 }
                 
                 let userDefaults = NSUserDefaults.standardUserDefaults()
                 if !userDefaults.boolForKey("Launched Before") {
                     CloudKitHelper().handleFirstTime()
-                }
-                
-                if appIsActive && !notificationsEnabled && !AppData.userID.isEmpty {
-                    CloudKitHelper().loadAll()
                 }
             }
         }
@@ -61,26 +63,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func applicationDidBecomeActive(application: UIApplication) {
+        
+        print("") ///////////////////////////////////////////////////////////////
+        
         resetWastedTimeStopWatch()
         startStopWatches()
         CoreDataHelper().loadCoreDataValues()
         
-//        if internetConnectionAvailable && !AppData.userID.isEmpty {
-//            CloudKitHelper().loadAll()
-//            CloudKitHelper().loadInAppPurchasesData()
-//        } else {
-//            CoreDataHelper().loadCoreDataValues()
-//        }
-        
         saved = false
         savedInCloud = false
-        inAppPurchasesLoaded = false
         appIsActive = true
+        
+        if internetConnectionAvailable && !AppData.userID.isEmpty {
+            CloudKitHelper().loadAll()
+            shouldLoad = false
+        } else if !AppData.userID.isEmpty {
+            shouldLoad = true
+        }
+        
+    }
+    
+    
+    func applicationWillEnterForeground(application: UIApplication) {
+        var i = 0
+        while cloudUpdatesInProgress {
+            i += 1
+            if i > 1000000 { break } // a way to invalidate pending updates? However that shouldn't be a problem considering saving 
+        }
     }
     
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        print("RECEIVED NOTIFICATION") ///////////////////////////////////////////////
+        print("Application received remote notification!")
         let cloudKitNotification = CKNotification(fromRemoteNotificationDictionary: userInfo as! [String : NSObject])
         if cloudKitNotification.notificationType == .Query {
             let queryNotification = cloudKitNotification as! CKQueryNotification
@@ -99,19 +113,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     
                 }
-//                database.fetchRecordWithID(queryNotification.recordID!, completionHandler: { (record: CKRecord?, error: NSError?) -> Void in
-//                    guard error == nil else {
-//                        print ("ERROR fetching Master Global record update, error \(error?.localizedDescription)")
-//                        return
-//                    }
-//                    if queryNotification.queryNotificationReason == .RecordUpdated {
-//                        for (key, _) in AppData.masterGlobalData {
-//                            AppData.masterGlobalData[key] = record![key] as? Double
-//                        }
-//                    }
-//                })
-
+                
             } else {
+                
                 let database = CKContainer.defaultContainer().privateCloudDatabase
                 database.fetchRecordWithID(queryNotification.recordID!)
                 { record, error in
@@ -132,7 +136,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         }
                     }
                 }
-                
             }
         }
     }
@@ -145,18 +148,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillResignActive(application: UIApplication) {
         stopStopWatches()
+        saveData(application)
         appIsActive = false
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         stopStopWatches()
-        saveData()
+        saveData(application)
         appIsActive = false
     }
     
     func applicationWillTerminate(application: UIApplication) {
-        saveData()
+        saveData(application)
     }
+    
+    
     
     
 //# MARK: - Helper methods
@@ -175,25 +181,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GlobalStopWatches.currentWastedTimeStopWatch.reset()
     }
     
-    func saveData() {
+    func saveData(application: UIApplication) {
         if !saved {
             DataModel().updateUserPrivateDataValues()
             DataModel().updateMasterGlobalDataValues()
             CoreDataHelper().updateCoreDataValues("UserPrivateData")
             CoreDataHelper().updateCoreDataValues("MasterGlobalData")
-            saved = true
-            
             if internetConnectionAvailable && !AppData.userID.isEmpty {
-                saveDataInCloud()
+                saveDataInCloud(application)
+                savedInCloud = true
             }
+            saved = true
         }
     }
     
-    func saveDataInCloud() {
-        CloudKitHelper().UpdateAll()
+    func saveDataInCloud(application: UIApplication) {
         AppData.lastSyncedData = AppData.userPrivateData
         CoreDataHelper().updateCoreDataValues("LastSyncedData")
-        savedInCloud = true
+        CloudKitHelper().UpdateAll(application)
     }
     
     
