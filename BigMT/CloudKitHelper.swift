@@ -169,12 +169,16 @@ class CloudKitHelper {
                     fetchedData[key] = value
                 }
             } else {
+                print(AppData.userPrivateUpdateID) ////////////////////////////////////////////////
+                print(fetchedData["updateID"])     ////////////////////////////////////////////////
                 AppData.tmpData = AppData.userPrivateData
                 for (key, _) in AppData.userPrivateData {
                     AppData.userPrivateData[key] = fetchedData[key] as? Double
                 }
+                self.loadPrivateData()
                 DataModel().resolveUserPrivateDataConflict()
                 self.updateUserPrivateData()
+                return
             }
             self.userPrivateData.saveRecord(fetchedData)
             { savedData, error in
@@ -182,6 +186,8 @@ class CloudKitHelper {
                     print("ERROR during saving in Update User Private Data, error \(error?.localizedDescription)")
                 } else {
                     print("CloudKit - UserPrivateData updated successfully!")
+                    AppData.lastSyncedData = AppData.userPrivateData
+                    CoreDataHelper().updateCoreDataValues("LastSyncedData")
                 }
                 self.appDelegate.updatingCloudUserData = false
             }
@@ -206,8 +212,10 @@ class CloudKitHelper {
                 for (key, _) in AppData.userPrivateData {
                     AppData.userPrivateData[key] = fetchedData[key] as? Double
                 }
+                self.loadPrivateData()
                 DataModel().resolveUserPrivateDataConflict()
                 self.updateUserWastedMoney()
+                return
             }
             self.userPrivateData.saveRecord(fetchedData)
             { savedData, error in
