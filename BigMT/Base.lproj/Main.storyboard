@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Main-->
@@ -17,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time wasted:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeW-98-ueM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time wasted:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeW-98-ueM">
                                 <rect key="frame" x="112" y="256" width="97" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbD-W6-sic">
-                                <rect key="frame" x="102" y="284" width="117" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbD-W6-sic">
+                                <rect key="frame" x="0.0" y="284" width="320" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -35,6 +36,7 @@
                             <constraint firstItem="EeW-98-ueM" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="68u-bi-bXb"/>
                             <constraint firstItem="GbD-W6-sic" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="FX1-76-DbK"/>
                             <constraint firstItem="GbD-W6-sic" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="13.5" id="Vnu-j9-2Zq"/>
+                            <constraint firstItem="GbD-W6-sic" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="e95-RQ-9qG"/>
                             <constraint firstItem="EeW-98-ueM" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="-18" id="q4g-je-G2g"/>
                         </constraints>
                     </view>
@@ -131,14 +133,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-of-2d8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-of-2d8">
                                 <rect key="frame" x="54" y="50" width="137" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qd-eE-Yj9">
-                                <rect key="frame" x="199" y="50" width="67" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qd-eE-Yj9">
+                                <rect key="frame" x="73" y="50" width="320" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -158,6 +160,7 @@
                             <constraint firstItem="QrS-L1-OlL" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="-25.5" id="9F4-cS-axQ"/>
                             <constraint firstItem="8qd-eE-Yj9" firstAttribute="top" secondItem="LDb-k2-Tkz" secondAttribute="top" constant="50" id="Afw-Ls-FUx"/>
                             <constraint firstItem="CDd-kb-gln" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="-88.5" id="Azy-uU-aCs"/>
+                            <constraint firstItem="8qd-eE-Yj9" firstAttribute="width" secondItem="LDb-k2-Tkz" secondAttribute="width" id="CfG-rc-b3y"/>
                             <constraint firstItem="ms1-2n-hXU" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="D4y-5W-alm"/>
                             <constraint firstItem="p4B-zY-bhL" firstAttribute="centerY" secondItem="LDb-k2-Tkz" secondAttribute="centerY" constant="69" id="Db7-DA-3hb"/>
                             <constraint firstItem="qVy-xe-s6Z" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="EgH-HS-wK4"/>
@@ -277,13 +280,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsb-OY-fQk">
-                                <rect key="frame" x="54" y="50" width="137" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsb-OY-fQk">
+                                <rect key="frame" x="-38" y="50" width="321" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvG-0Q-41I">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvG-0Q-41I">
                                 <rect key="frame" x="199" y="50" width="67" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -302,6 +305,7 @@
                             <constraint firstItem="rSI-dv-rFK" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="QBF-Lh-1Zg"/>
                             <constraint firstItem="rSI-dv-rFK" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="-80" id="SZ0-uk-XRO"/>
                             <constraint firstItem="rOa-7t-caR" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="U2G-bV-4IX"/>
+                            <constraint firstItem="hsb-OY-fQk" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="XJN-ix-etm"/>
                             <constraint firstItem="Wsc-zV-O1M" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" constant="1" id="Y8g-QD-YLH"/>
                             <constraint firstItem="pAO-Ye-XeM" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="-17" id="aRw-ak-UvA"/>
                             <constraint firstItem="GVJ-UM-8ty" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" constant="46" id="c39-wX-KuA"/>
@@ -352,14 +356,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEe-an-LZX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEe-an-LZX">
                                 <rect key="frame" x="54" y="50" width="137" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmY-uC-6Jf">
-                                <rect key="frame" x="199" y="50" width="67" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmY-uC-6Jf">
+                                <rect key="frame" x="73" y="50" width="320" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -421,6 +425,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zmY-uC-6Jf" firstAttribute="width" secondItem="KLJ-75-NeN" secondAttribute="width" id="0Pp-1n-TDL"/>
                             <constraint firstItem="Uck-cL-jbM" firstAttribute="centerX" secondItem="KLJ-75-NeN" secondAttribute="centerX" id="0Yp-jc-Xvv"/>
                             <constraint firstItem="Cjm-6g-MU6" firstAttribute="top" secondItem="KLJ-75-NeN" secondAttribute="top" constant="30" id="0li-9M-SwN"/>
                             <constraint firstItem="Uck-cL-jbM" firstAttribute="centerY" secondItem="KLJ-75-NeN" secondAttribute="centerY" constant="14.5" id="3F8-WM-1aP"/>
@@ -479,14 +484,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rug-ud-Vea">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're still wasting time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rug-ud-Vea">
                                 <rect key="frame" x="54" y="50" width="137" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQX-DI-LNE">
-                                <rect key="frame" x="199" y="50" width="67" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQX-DI-LNE">
+                                <rect key="frame" x="73" y="50" width="320" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -497,7 +502,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="obl-lE-Knz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading products" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mM5-RA-Z0S">
+                                <rect key="frame" x="32" y="190" width="256" height="188"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="obl-lE-Knz">
                                 <rect key="frame" x="0.0" y="128" width="320" height="391"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -531,22 +542,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Rug-ud-Vea" firstAttribute="centerX" secondItem="rl7-tB-Djx" secondAttribute="centerX" constant="-37.5" id="3He-Po-hfa"/>
+                            <constraint firstItem="mM5-RA-Z0S" firstAttribute="width" secondItem="rl7-tB-Djx" secondAttribute="width" multiplier="0.8" id="5fB-2W-rBh"/>
                             <constraint firstItem="RGg-MC-htt" firstAttribute="top" secondItem="obl-lE-Knz" secondAttribute="bottom" id="7fq-3I-odW"/>
                             <constraint firstItem="3hM-Qk-j72" firstAttribute="centerX" secondItem="rl7-tB-Djx" secondAttribute="centerX" id="ALx-n9-9Aj"/>
                             <constraint firstItem="eQX-DI-LNE" firstAttribute="top" secondItem="rl7-tB-Djx" secondAttribute="top" constant="50" id="ENR-Fv-jKI"/>
                             <constraint firstItem="eQX-DI-LNE" firstAttribute="centerX" secondItem="rl7-tB-Djx" secondAttribute="centerX" constant="72.5" id="dkQ-7F-z3h"/>
                             <constraint firstItem="obl-lE-Knz" firstAttribute="top" secondItem="3hM-Qk-j72" secondAttribute="bottom" constant="30" id="eRc-8Q-do1"/>
+                            <constraint firstItem="mM5-RA-Z0S" firstAttribute="centerX" secondItem="rl7-tB-Djx" secondAttribute="centerX" id="g4l-7q-1wh"/>
                             <constraint firstAttribute="trailing" secondItem="obl-lE-Knz" secondAttribute="trailing" id="hR4-gG-LAo"/>
                             <constraint firstItem="3hM-Qk-j72" firstAttribute="top" secondItem="rl7-tB-Djx" secondAttribute="top" constant="80" id="kSw-gI-hxq"/>
                             <constraint firstItem="Stc-LN-mZv" firstAttribute="top" secondItem="rl7-tB-Djx" secondAttribute="top" constant="30" id="l6y-XZ-I0l"/>
+                            <constraint firstItem="eQX-DI-LNE" firstAttribute="width" secondItem="rl7-tB-Djx" secondAttribute="width" id="tEe-dA-Q2r"/>
                             <constraint firstItem="Rug-ud-Vea" firstAttribute="top" secondItem="rl7-tB-Djx" secondAttribute="top" constant="50" id="tJa-bz-nag"/>
                             <constraint firstItem="Stc-LN-mZv" firstAttribute="centerX" secondItem="rl7-tB-Djx" secondAttribute="centerX" id="uIz-SN-lGH"/>
+                            <constraint firstItem="mM5-RA-Z0S" firstAttribute="height" secondItem="rl7-tB-Djx" secondAttribute="height" multiplier="0.33" id="udQ-lD-rT6"/>
+                            <constraint firstItem="mM5-RA-Z0S" firstAttribute="centerY" secondItem="rl7-tB-Djx" secondAttribute="centerY" id="ufo-gq-VI4"/>
                             <constraint firstItem="obl-lE-Knz" firstAttribute="leading" secondItem="rl7-tB-Djx" secondAttribute="leading" id="yn7-rg-cHM"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Store" id="MHY-WQ-g0B"/>
                     <connections>
                         <outlet property="currentlyWastedTimeLabel" destination="eQX-DI-LNE" id="qm8-ER-Kq3"/>
+                        <outlet property="loadingLabel" destination="mM5-RA-Z0S" id="30c-S1-dfm"/>
                         <outlet property="productsTableView" destination="obl-lE-Knz" id="DeW-ea-Z0O"/>
                     </connections>
                 </viewController>

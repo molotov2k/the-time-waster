@@ -84,8 +84,6 @@ class CloudKitHelper {
                         }
                         DataModel().resolveUserPrivateDataConflict()
                     }
-                    AppData.userPrivateUpdateID = AppData.userPrivateData["updateID"]!
-                    AppData.userPrivateData["updateID"] = Double(arc4random())
                     print("CloudKit - UserPrivateData loaded successfully!")
                 }
             }
@@ -146,9 +144,8 @@ class CloudKitHelper {
                     print("*** Saving error occurred in \(fetchError.localizedDescription) ***")
                 } else {
                     AppData.newUser = true
-                    self.subscribeToUserPrivateDataUpdates() // part of handling the first time
-                    self.subscribeToMasterGlobalDataUpdates()
-                    // do I need both subscriptions for every user?
+                    self.subscribeToUserPrivateDataUpdates()  // part of handling the first time
+                    self.subscribeToMasterGlobalDataUpdates() // do I need both subscriptions for every user?
                     print("User Private Data saved successfully!")
                 }
         })
@@ -164,13 +161,12 @@ class CloudKitHelper {
                 print("ERROR during loading in Update User Private Data, error \(error?.localizedDescription)")
                 return
             }
-            if AppData.userPrivateUpdateID == fetchedData["updateID"] as? Double {
+            if AppData.userPrivateData["updateID"] == fetchedData["updateID"] as? Double {
                 for (key, value) in AppData.userPrivateData {
+                    AppData.userPrivateData["updateID"] = Double(arc4random())
                     fetchedData[key] = value
                 }
             } else {
-                print(AppData.userPrivateUpdateID) ////////////////////////////////////////////////
-                print(fetchedData["updateID"])     ////////////////////////////////////////////////
                 AppData.tmpData = AppData.userPrivateData
                 for (key, _) in AppData.userPrivateData {
                     AppData.userPrivateData[key] = fetchedData[key] as? Double
@@ -203,10 +199,10 @@ class CloudKitHelper {
                 print("ERROR during Update User Wasted Money, error \(error?.localizedDescription)")
                 return
             }
-            if AppData.userPrivateUpdateID == fetchedData["updateID"] as? Double {
-                AppData.userPrivateUpdateID = AppData.userPrivateData["updateID"]!
+            if AppData.userPrivateData["updateID"] == fetchedData["updateID"] as? Double {
                 AppData.userPrivateData["updateID"] = Double(arc4random())
                 fetchedData["moneyWasted"] = AppData.userPrivateData["moneyWasted"]
+                fetchedData["updateID"] = AppData.userPrivateData["updateID"]
             } else {
                 AppData.tmpData = AppData.userPrivateData
                 for (key, _) in AppData.userPrivateData {

@@ -11,7 +11,7 @@
 		39A4F14C1D16DBBD00AC1B55 /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A4F14B1D16DBBD00AC1B55 /* CloudKitHelper.swift */; };
 		8E0EFBE91D21CF750039EDE9 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0EFBE81D21CF750039EDE9 /* Reachability.swift */; };
 		8E0EFBEB1D2328C80039EDE9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0EFBEA1D2328C80039EDE9 /* StoreKit.framework */; };
-		8E1BA7421D1CA9080015B271 /* MoneyWasteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA7411D1CA9080015B271 /* MoneyWasteViewController.swift */; };
+		8E1BA7421D1CA9080015B271 /* MoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA7411D1CA9080015B271 /* MoneyViewController.swift */; };
 		8E1BA7691D1D8C680015B271 /* BigMT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA7671D1D8C680015B271 /* BigMT.xcdatamodeld */; };
 		8E1BA76B1D1DB6FC0015B271 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BA76A1D1DB6FC0015B271 /* CoreDataHelper.swift */; };
 		8E57A9001D1B265F00F59D69 /* GlobalStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57A8FF1D1B265F00F59D69 /* GlobalStatsViewController.swift */; };
@@ -34,7 +34,7 @@
 		39A4F14B1D16DBBD00AC1B55 /* CloudKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		8E0EFBE81D21CF750039EDE9 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		8E0EFBEA1D2328C80039EDE9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		8E1BA7411D1CA9080015B271 /* MoneyWasteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyWasteViewController.swift; sourceTree = "<group>"; };
+		8E1BA7411D1CA9080015B271 /* MoneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyViewController.swift; sourceTree = "<group>"; };
 		8E1BA7681D1D8C680015B271 /* BigMT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BigMT.xcdatamodel; sourceTree = "<group>"; };
 		8E1BA76A1D1DB6FC0015B271 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		8E57A8FF1D1B265F00F59D69 /* GlobalStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalStatsViewController.swift; sourceTree = "<group>"; };
@@ -66,13 +66,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E6D89D41D4B8A81004AA22E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8EFAB03F1D118CEB00666DA6 /* MainViewController.swift */,
+				8EFAB0411D118CEB00666DA6 /* LocalStatsViewController.swift */,
+				8E57A8FF1D1B265F00F59D69 /* GlobalStatsViewController.swift */,
+				8E1BA7411D1CA9080015B271 /* MoneyViewController.swift */,
+				8EBCD02F1D2BE91E0026223B /* IAPViewController.swift */,
+				8EFAB0431D118CEB00666DA6 /* Main.storyboard */,
+				8EFAB0481D118CEC00666DA6 /* LaunchScreen.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		8E6D89D51D4B8AC3004AA22E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				39A4F14B1D16DBBD00AC1B55 /* CloudKitHelper.swift */,
+				8E1BA76A1D1DB6FC0015B271 /* CoreDataHelper.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		8E6D89D61D4B8E1F004AA22E /* Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				8EFAB04B1D118CEC00666DA6 /* Info.plist */,
+				8EFAB0461D118CEC00666DA6 /* Assets.xcassets */,
+				39A4F1481D16D20700AC1B55 /* BigMT.entitlements */,
+				8E1BA7671D1D8C680015B271 /* BigMT.xcdatamodeld */,
+			);
+			name = Stuff;
+			sourceTree = "<group>";
+		};
 		8EFAB0311D118CEB00666DA6 = {
 			isa = PBXGroup;
 			children = (
-				8E0EFBEA1D2328C80039EDE9 /* StoreKit.framework */,
-				39A4F1491D16D22400AC1B55 /* CloudKit.framework */,
 				8EFAB03C1D118CEB00666DA6 /* BigMT */,
 				8EFAB03B1D118CEB00666DA6 /* Products */,
+				8E0EFBEA1D2328C80039EDE9 /* StoreKit.framework */,
+				39A4F1491D16D22400AC1B55 /* CloudKit.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,25 +121,15 @@
 		8EFAB03C1D118CEB00666DA6 /* BigMT */ = {
 			isa = PBXGroup;
 			children = (
-				39A4F1481D16D20700AC1B55 /* BigMT.entitlements */,
 				8EFAB03D1D118CEB00666DA6 /* AppDelegate.swift */,
-				39A4F14B1D16DBBD00AC1B55 /* CloudKitHelper.swift */,
-				8E1BA76A1D1DB6FC0015B271 /* CoreDataHelper.swift */,
-				8EFAB0511D11A01500666DA6 /* DataModel.swift */,
 				8E5B31761D18BC3B00057B01 /* AppData.swift */,
+				8EAA25F01D146DDC000C7346 /* GlobalStopWatches.swift */,
+				8EFAB0511D11A01500666DA6 /* DataModel.swift */,
 				8E0EFBE81D21CF750039EDE9 /* Reachability.swift */,
 				8EFAB0531D11A12800666DA6 /* StopWatch.swift */,
-				8EAA25F01D146DDC000C7346 /* GlobalStopWatches.swift */,
-				8EFAB03F1D118CEB00666DA6 /* MainViewController.swift */,
-				8EFAB0411D118CEB00666DA6 /* LocalStatsViewController.swift */,
-				8E57A8FF1D1B265F00F59D69 /* GlobalStatsViewController.swift */,
-				8E1BA7411D1CA9080015B271 /* MoneyWasteViewController.swift */,
-				8EBCD02F1D2BE91E0026223B /* IAPViewController.swift */,
-				8EFAB0431D118CEB00666DA6 /* Main.storyboard */,
-				8EFAB0481D118CEC00666DA6 /* LaunchScreen.storyboard */,
-				8EFAB04B1D118CEC00666DA6 /* Info.plist */,
-				8E1BA7671D1D8C680015B271 /* BigMT.xcdatamodeld */,
-				8EFAB0461D118CEC00666DA6 /* Assets.xcassets */,
+				8E6D89D51D4B8AC3004AA22E /* Helpers */,
+				8E6D89D41D4B8A81004AA22E /* UI */,
+				8E6D89D61D4B8E1F004AA22E /* Stuff */,
 			);
 			path = BigMT;
 			sourceTree = "<group>";
@@ -199,7 +223,7 @@
 				8EFAB0421D118CEB00666DA6 /* LocalStatsViewController.swift in Sources */,
 				8E1BA7691D1D8C680015B271 /* BigMT.xcdatamodeld in Sources */,
 				8EFAB03E1D118CEB00666DA6 /* AppDelegate.swift in Sources */,
-				8E1BA7421D1CA9080015B271 /* MoneyWasteViewController.swift in Sources */,
+				8E1BA7421D1CA9080015B271 /* MoneyViewController.swift in Sources */,
 				8EFAB0541D11A12800666DA6 /* StopWatch.swift in Sources */,
 				8E5B31771D18BC3B00057B01 /* AppData.swift in Sources */,
 				8E1BA76B1D1DB6FC0015B271 /* CoreDataHelper.swift in Sources */,

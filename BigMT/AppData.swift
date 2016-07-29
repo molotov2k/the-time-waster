@@ -19,11 +19,10 @@ class AppData: NSObject {
     static var inAppPurchaseIDs = [String: Double]()
     static var buyingFirstTime = false
     static var thisSessionMoneyWaste = 0.0
+    static var purchaseInProgress = false
     
     static var lastUserPrivateDataUpdateTime = NSDate()
     static var lastMasterGlobalDataUpdateTime = NSDate()
-    
-    static var userPrivateUpdateID = 0.0
     
     static var userPrivateData = ["averageWasteInDay": 0.0,
                                   "averageWasteInUse": 0.0,

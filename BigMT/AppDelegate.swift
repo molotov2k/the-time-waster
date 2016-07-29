@@ -27,12 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var internetConnectionAvailable = false {
         didSet {
-            if internetConnectionAvailable && oldValue == false {
+            if internetConnectionAvailable && !oldValue {
                 
                 print("Internet Connection status changed to true!")
+                NSNotificationCenter.defaultCenter().postNotificationName("internet up", object: nil)
                 
                 if saved && !savedInCloud {
-                    saveDataInCloud(UIApplication.sharedApplication()) ///////// Test this
+                    saveDataInCloud(UIApplication.sharedApplication())
                 }
                 
                 if shouldLoad && !notificationsEnabled {
@@ -44,6 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if !userDefaults.boolForKey("Launched Before") {
                     CloudKitHelper().handleFirstTime()
                 }
+            }
+            
+            if !internetConnectionAvailable && oldValue {
+                print("Internet is down.")
+                NSNotificationCenter.defaultCenter().postNotificationName("internet down", object: nil)
             }
         }
     }
@@ -68,19 +74,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("") ///////////////////////////////////////////////////////////////
         
-        resetWastedTimeStopWatch()
-        startStopWatches()
-        CoreDataHelper().loadCoreDataValues()
-        
-        saved = false
-        savedInCloud = false
-        appIsActive = true
-        
-        if internetConnectionAvailable && !AppData.userID.isEmpty {
-            CloudKitHelper().loadAll()
-            shouldLoad = false
-        } else if !AppData.userID.isEmpty {
-            shouldLoad = true
+        if !AppData.purchaseInProgress {
+            resetWastedTimeStopWatch()
+            startStopWatches()
+            CoreDataHelper().loadCoreDataValues()
+            
+            saved = false
+            savedInCloud = false
+            appIsActive = true
+            
+            if internetConnectionAvailable && !AppData.userID.isEmpty {
+                CloudKitHelper().loadAll()
+                shouldLoad = false
+            } else if !AppData.userID.isEmpty {
+                shouldLoad = true
+            }
         }
         
     }
@@ -150,14 +158,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillResignActive(application: UIApplication) {
         
-        print("") ///////////////////////////////////////////////////////////////
+        print("\n--- <<< Resigning Active, purchase status: \(AppData.purchaseInProgress) >>> ---\n") ///////////////////////////////////////////////////////////////
         
-        stopStopWatches()
-        saveData(application)
-        appIsActive = false
+        
+        if !AppData.purchaseInProgress {
+            stopStopWatches()
+            saveData(application)
+            appIsActive = false
+        }
+        
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
+        
+        print("\n--- <<< Entering Background >>> ---\n") ///////////////////////////////////////////////////////////////
+        
         stopStopWatches()
         saveData(application)
         appIsActive = false
