@@ -8,8 +8,11 @@
 
 import Foundation
 
-class GlobalStopWatches: NSObject {
+class GlobalStopWatches {
+    
     static let currentWastedTimeStopWatch = StopWatch()
     static let idleStopWatch = StopWatch()
-    private override init() {}
+    
+    private init() {}
+    
 }

@@ -33,12 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 NSNotificationCenter.defaultCenter().postNotificationName("internet up", object: nil)
                 
                 if saved && !savedInCloud {
-                    saveDataInCloud(UIApplication.sharedApplication())
+                    self.saveDataInCloud()
                 }
                 
                 if shouldLoad && !notificationsEnabled {
                     CloudKitHelper().loadAll()
-                    shouldLoad = false
+                    self.shouldLoad = false
                 }
                 
                 let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         
-        print("") ///////////////////////////////////////////////////////////////
+        print("\n--- <<< Did Become Active >>> ---\n") ///////////////////////////////////////////////////////////////
         
         if !AppData.purchaseInProgress {
             resetWastedTimeStopWatch()
@@ -95,11 +95,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func applicationWillEnterForeground(application: UIApplication) {
-        var i = 0
-        while cloudUpdatesInProgress {
-            i += 1
-            if i > 1000000 { break } // a way to invalidate pending updates? However that shouldn't be a problem considering saving 
-        }
+        
+        print("\n--- <<< Will Enter Foreground >>> ---\n") ///////////////////////////////////////////////////////////////
+        
+//        var i = 0
+//        while cloudUpdatesInProgress {
+//            i += 1
+//            if i > 1000000 { break } // a way to invalidate pending updates? However that shouldn't be a problem considering saving 
+//        }
     }
     
 
@@ -208,15 +211,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             CoreDataHelper().updateCoreDataValues("UserPrivateData")
             CoreDataHelper().updateCoreDataValues("MasterGlobalData")
             if internetConnectionAvailable && !AppData.userID.isEmpty {
-                saveDataInCloud(application)
-                savedInCloud = true
+                self.saveDataInCloud()
+                self.savedInCloud = true
             }
-            saved = true
+            self.saved = true
         }
     }
     
-    func saveDataInCloud(application: UIApplication) {
-        CloudKitHelper().UpdateAll(application)
+    func saveDataInCloud() {
+        CloudKitHelper().UpdateAll()
     }
     
     

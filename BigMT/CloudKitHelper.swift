@@ -8,14 +8,17 @@
 
 import Foundation
 import CloudKit
-import UIKit
 
 class CloudKitHelper {
+    
     var container: CKContainer
     var userPrivateData: CKDatabase
     var masterGlobalData: CKDatabase
     var inAppPurchasesData: CKDatabase
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let operationQueue = NSOperationQueue()
+    
+    
+//# MARK: - General Stuff
     
     init() {
         container = CKContainer.defaultContainer()
@@ -24,26 +27,17 @@ class CloudKitHelper {
         inAppPurchasesData = container.publicCloudDatabase
     }
     
+    
     func loadAll() {
         self.loadPrivateData()
         self.loadMasterData()
         self.loadInAppPurchasesData()
     }
     
-    func UpdateAll(application: UIApplication) {
-        
-        application.beginBackgroundTaskWithExpirationHandler(nil)
-        
-        var globalBackgroundQueue: dispatch_queue_t {
-            return dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)
-        }
-
-        dispatch_barrier_async(globalBackgroundQueue) {
-            self.updateUserPrivateData()
-            dispatch_async(globalBackgroundQueue) {
-                self.updateMasterGlobalData()
-            }
-        }
+    
+    func UpdateAll() {
+        self.updateUserPrivateData()
+        self.updateMasterGlobalData()
     }
     
     
@@ -62,76 +56,10 @@ class CloudKitHelper {
                 }
         })
     }
-    
-    
-    func loadPrivateData() {
-        let recordID = CKRecordID.init(recordName: AppData.userID)
-        userPrivateData.fetchRecordWithID(recordID)
-        { result, error in
-            if error != nil {
-                print("ERROR in Load Private Data, error \(error?.localizedDescription)")
-            } else {
-                AppData.lastUserPrivateDataUpdateTime = NSDate()
-                if let result = result {
-                    if AppData.userPrivateData["updateID"] == result["updateID"] as? Double {
-                        for (key, _) in AppData.userPrivateData {
-                            AppData.userPrivateData[key] = result[key] as? Double
-                        }
-                    } else {
-                        AppData.tmpData = AppData.userPrivateData
-                        for (key, _) in AppData.userPrivateData {
-                            AppData.userPrivateData[key] = result[key] as? Double
-                        }
-                        DataModel().resolveUserPrivateDataConflict()
-                    }
-                    print("CloudKit - UserPrivateData loaded successfully!")
-                }
-            }
-        }
-    }
-    
-    
-    func loadMasterData() {
-        let recordID = CKRecordID.init(recordName: "masterGlobal")
-        masterGlobalData.fetchRecordWithID(recordID)
-        { result, error in
-            if error != nil {
-                print("ERROR in Load Master Data, error \(error?.localizedDescription)")
-            } else {
-                AppData.lastMasterGlobalDataUpdateTime = NSDate()
-                if let result = result {
-                    for (key, _) in AppData.masterGlobalData {
-                        AppData.masterGlobalData[key] = result[key] as? Double
-                    }
-                    print("CloudKit - MastedGlobalData loaded successfully!")
-                }
-            }
-        }
-    }
-    
-    
-    func loadInAppPurchasesData() {
-        let predicate = NSPredicate.init(value: true)
-        let query = CKQuery.init(recordType: "inAppPurchases", predicate: predicate)
-        
-        inAppPurchasesData.performQuery(query, inZoneWithID: nil)
-        { records, error in
-            if error != nil {
-                print("ERROR in Load InAppPurchases Data, error \(error?.localizedDescription)")
-            } else {
-                if let records = records {
-                    for record in records {
-                        let recordValue: Double = record["wm_value"] as! Double
-                        AppData.inAppPurchaseIDs[record["name"] as! String] = recordValue
-                    }
-                    print("CloudKit - InAppPurchases loaded successfully!")
-                }
-            }
-            
-        }
-    }
-    
 
+    
+//# MARK: - Saving Data (part of the handling first time)
+    
     func saveUserPrivateData() {
         let recordID = CKRecordID.init(recordName: AppData.userID)
         let record = CKRecord(recordType: "userPrivateData", recordID: recordID)
@@ -144,51 +72,176 @@ class CloudKitHelper {
                     print("*** Saving error occurred in \(fetchError.localizedDescription) ***")
                 } else {
                     AppData.newUser = true
-                    self.subscribeToUserPrivateDataUpdates()  // part of handling the first time
-                    self.subscribeToMasterGlobalDataUpdates() // do I need both subscriptions for every user?
+                    self.subscribeToUserPrivateDataUpdates()
+                    self.subscribeToMasterGlobalDataUpdates()
                     print("User Private Data saved successfully!")
                 }
         })
     }
     
+
+//# MARK: - Loading Data
     
-    func updateUserPrivateData() {
-        appDelegate.updatingCloudUserData = true
-        let recordID = CKRecordID.init(recordName: AppData.userID)
-        userPrivateData.fetchRecordWithID(recordID)
-        { fetchedData, error in
-            guard let fetchedData = fetchedData else {
-                print("ERROR during loading in Update User Private Data, error \(error?.localizedDescription)")
-                return
-            }
-            if AppData.userPrivateData["updateID"] == fetchedData["updateID"] as? Double {
-                for (key, value) in AppData.userPrivateData {
-                    AppData.userPrivateData["updateID"] = Double(arc4random())
-                    fetchedData[key] = value
+    func loadPrivateData() {
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "userPrivateData", predicate: predicate)
+        let loadUserDataOperation = CKQueryOperation(query: query)
+        
+        loadUserDataOperation.queuePriority = .VeryHigh
+        
+        loadUserDataOperation.recordFetchedBlock = { result in
+            if AppData.userPrivateData["updateID"] == result["updateID"] as? Double {
+                for (key, _) in AppData.userPrivateData {
+                    AppData.userPrivateData[key] = result[key] as? Double
                 }
             } else {
                 AppData.tmpData = AppData.userPrivateData
                 for (key, _) in AppData.userPrivateData {
-                    AppData.userPrivateData[key] = fetchedData[key] as? Double
+                    AppData.userPrivateData[key] = result[key] as? Double
                 }
-                self.loadPrivateData()
                 DataModel().resolveUserPrivateDataConflict()
-                self.updateUserPrivateData()
-                return
-            }
-            self.userPrivateData.saveRecord(fetchedData)
-            { savedData, error in
-                if (error != nil) {
-                    print("ERROR during saving in Update User Private Data, error \(error?.localizedDescription)")
-                } else {
-                    print("CloudKit - UserPrivateData updated successfully!")
-                    AppData.lastSyncedData = AppData.userPrivateData
-                    CoreDataHelper().updateCoreDataValues("LastSyncedData")
-                }
-                self.appDelegate.updatingCloudUserData = false
             }
         }
+        
+        loadUserDataOperation.queryCompletionBlock = { cursor, error in
+            if let error = error {
+                print("ERROR in Load User Private Data, error: \(error.localizedDescription)")
+            } else {
+                print("CloudKit - UserPrivateData loaded successfully!")
+            }
+        }
+        
+        self.operationQueue.addOperations([loadUserDataOperation], waitUntilFinished: true)
+        //self.userPrivateData.addOperation(loadUserDataOperation)
+        
     }
+    
+    
+    func loadMasterData() {
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "masterGlobalData", predicate: predicate)
+        let loadMasterDataOperation = CKQueryOperation(query: query)
+
+        loadMasterDataOperation.queuePriority = .VeryHigh
+        
+        loadMasterDataOperation.recordFetchedBlock = { result in
+            AppData.lastMasterGlobalDataUpdateTime = NSDate()
+            for (key, _) in AppData.masterGlobalData {
+                AppData.masterGlobalData[key] = result[key] as? Double
+            }
+        }
+        
+        loadMasterDataOperation.queryCompletionBlock = { cursor, error in
+            if let error = error {
+                print("ERROR in Load Master Data, error \(error.localizedDescription)")
+            } else {
+                print("CloudKit - MastedGlobalData loaded successfully!")
+            }
+        }
+        
+        //self.operationQueue.addOperations([loadMasterDataOperation], waitUntilFinished: true)
+        self.masterGlobalData.addOperation(loadMasterDataOperation)
+        print(self.operationQueue.operationCount)
+        
+    }
+    
+    
+    func loadInAppPurchasesData() {
+        
+        let predicate = NSPredicate.init(value: true)
+        let query = CKQuery.init(recordType: "inAppPurchases", predicate: predicate)
+        let loadPurchasesDataOperation = CKQueryOperation(query: query)
+        
+        loadPurchasesDataOperation.queuePriority = .VeryHigh
+        
+        loadPurchasesDataOperation.recordFetchedBlock = { result in
+            let recordValue = result["wm_value"] as! Double
+            let recordName = result["name"] as! String
+            AppData.inAppPurchaseIDs[recordName] = recordValue
+        }
+        
+        loadPurchasesDataOperation.queryCompletionBlock = { cursor, error in
+            if let error = error {
+                print("ERROR in Load InAppPurchases Data, error \(error.localizedDescription)")
+            } else {
+                print("CloudKit - InAppPurchases loaded successfully!")
+            }
+            print(AppData.inAppPurchaseIDs)
+        }
+        
+        //self.operationQueue.addOperations([loadPurchasesDataOperation], waitUntilFinished: true)
+        self.masterGlobalData.addOperation(loadPurchasesDataOperation)
+        
+    }
+    
+
+//# MARK: - Update Data
+    
+    func updateUserPrivateData() {
+        let recordID = CKRecordID.init(recordName: AppData.userID)
+        let record = CKRecord.init(recordType: "userPrivateData", recordID: recordID)
+        for (key, value) in AppData.userPrivateData {
+            record[key] = value
+        }
+        
+        let updateUserDataOperation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+        updateUserDataOperation.savePolicy = .AllKeys
+        updateUserDataOperation.longLived = true
+        updateUserDataOperation.queuePriority = .VeryLow
+        
+        updateUserDataOperation.perRecordCompletionBlock = { records, error in
+            if let error = error {
+                print("ERROR: \(error.localizedDescription)")
+            }
+        }
+
+        updateUserDataOperation.modifyRecordsCompletionBlock = { records, IDs, error in
+            if let error = error {
+                print("ERROR in Update User Private Data, error \(error.localizedDescription)")
+            } else {
+                print("CloudKit - UserPrivateData updated successfully!")
+            }
+        }
+        
+        //self.operationQueue.addOperations([updateUserDataOperation], waitUntilFinished: true)
+        self.userPrivateData.addOperation(updateUserDataOperation)
+        
+    }
+    
+
+    func updateMasterGlobalData() {
+        let recordID = CKRecordID.init(recordName: "masterGlobal")
+        let record = CKRecord.init(recordType: "masterGlobalData", recordID: recordID)
+        for (key, value) in AppData.masterGlobalData {
+            record[key] = value
+        }
+        
+        let updateMasterDataOperation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+        updateMasterDataOperation.savePolicy = .AllKeys
+        updateMasterDataOperation.longLived = true
+        updateMasterDataOperation.queuePriority = .VeryLow
+        
+        updateMasterDataOperation.perRecordCompletionBlock = { records, error in
+            if let error = error {
+                print("ERROR: \(error.localizedDescription)")
+            }
+        }
+        
+        updateMasterDataOperation.modifyRecordsCompletionBlock = { records, IDs, error in
+            if let error = error {
+                print("ERROR in Update User Private Data, error \(error.localizedDescription)")
+            } else {
+                print("CloudKit - MasterGlobalData updated successfully!")
+            }
+        }
+        
+        self.masterGlobalData.addOperation(updateMasterDataOperation)
+        //operationQueue.addOperations([updateMasterDataOperation], waitUntilFinished: true)
+        
+    }
+
     
     
     func updateUserWastedMoney() {
@@ -225,36 +278,36 @@ class CloudKitHelper {
     }
     
     
-    func updateMasterGlobalData() {
-        appDelegate.updatingCloudMasterData = true
-        let recordID = CKRecordID.init(recordName: "masterGlobal")
-        masterGlobalData.fetchRecordWithID(recordID)
-        { fetchedData, error in
-            guard let fetchedData = fetchedData else {
-                print("ERROR during loading in Update Master Global Data, error \(error?.localizedDescription)")
-                return
-            }
-            if AppData.masterGlobalData["updateID"] == fetchedData["updateID"] as? Double {
-                AppData.masterGlobalData["updateID"] = Double(arc4random())
-                for (key, value) in AppData.masterGlobalData {
-                    fetchedData[key] = value
-                }
-            } else {
-                self.loadMasterData()
-                self.updateMasterGlobalData()
-                return
-            }
-            self.masterGlobalData.saveRecord(fetchedData)
-            { savedData, error in
-                if (error != nil) {
-                    print("ERROR during saving in Update Master Global Data, error \(error?.localizedDescription)")
-                } else {
-                    print("CloudKit - MasterGlobalData updated successfully!")
-                }
-                self.appDelegate.updatingCloudMasterData = false
-            }
-        }
-    }
+//    func updateMasterGlobalData() {
+//        appDelegate.updatingCloudMasterData = true
+//        let recordID = CKRecordID.init(recordName: "masterGlobal")
+//        masterGlobalData.fetchRecordWithID(recordID)
+//        { fetchedData, error in
+//            guard let fetchedData = fetchedData else {
+//                print("ERROR during loading in Update Master Global Data, error \(error?.localizedDescription)")
+//                return
+//            }
+//            if AppData.masterGlobalData["updateID"] == fetchedData["updateID"] as? Double {
+//                AppData.masterGlobalData["updateID"] = Double(arc4random())
+//                for (key, value) in AppData.masterGlobalData {
+//                    fetchedData[key] = value
+//                }
+//            } else {
+//                self.loadMasterData()
+//                self.updateMasterGlobalData()
+//                return
+//            }
+//            self.masterGlobalData.saveRecord(fetchedData)
+//            { savedData, error in
+//                if (error != nil) {
+//                    print("ERROR during saving in Update Master Global Data, error \(error?.localizedDescription)")
+//                } else {
+//                    print("CloudKit - MasterGlobalData updated successfully!")
+//                }
+//                self.appDelegate.updatingCloudMasterData = false
+//            }
+//        }
+//    }
     
     
     func updateMasterWastedMoney() {
@@ -287,6 +340,8 @@ class CloudKitHelper {
         }
     }
     
+    
+//# MARK: - Subscribe to Notifications
     
     func subscribeToMasterGlobalDataUpdates() {
         let recordID = CKRecordID.init(recordName: "masterGlobal")

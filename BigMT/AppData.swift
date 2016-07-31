@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AppData: NSObject {
+class AppData {
     
     static var userID = ""
     static var newUser = false
@@ -52,6 +52,6 @@ class AppData: NSObject {
                                    "totalMoneyWaste": 0.0,
                                    "updateID": 0.0 ]
     
-    private override init() {}
+    private init() {}
     
 }

@@ -100,6 +100,15 @@
 			name = Stuff;
 			sourceTree = "<group>";
 		};
+		8E6D89D71D4E8289004AA22E /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				8E5B31761D18BC3B00057B01 /* AppData.swift */,
+				8EAA25F01D146DDC000C7346 /* GlobalStopWatches.swift */,
+			);
+			name = DataStore;
+			sourceTree = "<group>";
+		};
 		8EFAB0311D118CEB00666DA6 = {
 			isa = PBXGroup;
 			children = (
@@ -122,12 +131,11 @@
 			isa = PBXGroup;
 			children = (
 				8EFAB03D1D118CEB00666DA6 /* AppDelegate.swift */,
-				8E5B31761D18BC3B00057B01 /* AppData.swift */,
-				8EAA25F01D146DDC000C7346 /* GlobalStopWatches.swift */,
 				8EFAB0511D11A01500666DA6 /* DataModel.swift */,
 				8E0EFBE81D21CF750039EDE9 /* Reachability.swift */,
 				8EFAB0531D11A12800666DA6 /* StopWatch.swift */,
 				8E6D89D51D4B8AC3004AA22E /* Helpers */,
+				8E6D89D71D4E8289004AA22E /* DataStore */,
 				8E6D89D41D4B8A81004AA22E /* UI */,
 				8E6D89D61D4B8E1F004AA22E /* Stuff */,
 			);
