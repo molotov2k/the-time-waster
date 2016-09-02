@@ -23,7 +23,7 @@ class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var internetConnection = false
     
-    var userName = String()
+//    var userName = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,7 +170,7 @@ class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate
                 CloudKitHelper().updateMasterGlobalData()
                 print("Payment transaction completed successfully!")
                 
-                self.nameAlert()
+//                self.nameAlert()
                 
             case SKPaymentTransactionState.Failed:
                 SKPaymentQueue.defaultQueue().finishTransaction(transaction)
@@ -206,19 +206,19 @@ class IAPViewController: UIViewController, UITabBarDelegate, UITableViewDelegate
     }
     
     
-    func nameAlert() {
-        let alert = UIAlertController(title: "Thank you", message: "Please enter your name", preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler { (textField) in
-            textField.placeholder = "Your name"
-        }
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(action) -> Void in
-            let textField = alert.textFields![0] as UITextField
-            self.userName = textField.text!
-            print(self.userName)
-            AppData.purchaseInProgress = false
-        }))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
+//    func nameAlert() {
+//        let alert = UIAlertController(title: "Thank you", message: "Please enter your name", preferredStyle: .Alert)
+//        alert.addTextFieldWithConfigurationHandler { (textField) in
+//            textField.placeholder = "Your name"
+//        }
+//        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(action) -> Void in
+//            let textField = alert.textFields![0] as UITextField
+//            self.userName = textField.text!
+//            print(self.userName)
+//            AppData.purchaseInProgress = false
+//        }))
+//        self.presentViewController(alert, animated: true, completion: nil)
+//    }
     
     
 // MARK: TableView method implementation

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -9,7 +9,7 @@
         <!--Main-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="MainViewController" customModule="BigMT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="MainViewController" customModule="Time_Waster" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fDq-zl-cUN"/>
                         <viewControllerLayoutGuide type="bottom" id="Gtg-C2-gTY"/>
@@ -40,7 +40,7 @@
                             <constraint firstItem="EeW-98-ueM" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="-18" id="q4g-je-G2g"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Main" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Main" image="home" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="currentlyWastedTimeLabel" destination="GbD-W6-sic" id="kg5-4N-6V8"/>
                     </connections>
@@ -52,7 +52,7 @@
         <!--Global stats-->
         <scene sceneID="51O-kl-xvt">
             <objects>
-                <viewController id="I7t-Ml-bhx" userLabel="Global stats" customClass="GlobalStatsViewController" customModule="BigMT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I7t-Ml-bhx" userLabel="Global stats" customClass="GlobalStatsViewController" customModule="Time_Waster" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YAq-j0-o7c"/>
                         <viewControllerLayoutGuide type="bottom" id="Se0-Zv-nLY"/>
@@ -187,7 +187,7 @@
                             <constraint firstItem="K7w-SH-aMh" firstAttribute="centerX" secondItem="LDb-k2-Tkz" secondAttribute="centerX" id="zXP-Jp-H5V"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Global Stats" id="SJw-NZ-kZF"/>
+                    <tabBarItem key="tabBarItem" title="Global Stats" image="globe" id="SJw-NZ-kZF"/>
                     <connections>
                         <outlet property="averageWastedTimeInDayLabel" destination="QrS-L1-OlL" id="dfm-zm-vuw"/>
                         <outlet property="averageWastedTimeInUseLabel" destination="diJ-AJ-h67" id="8mF-g6-l85"/>
@@ -205,7 +205,7 @@
         <!--Your Stats-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="LocalStatsViewController" customModule="BigMT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="LocalStatsViewController" customModule="Time_Waster" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cgc-cf-EQo"/>
                         <viewControllerLayoutGuide type="bottom" id="pAV-XF-gMy"/>
@@ -324,7 +324,7 @@
                             <constraint firstItem="a3h-Sz-H7V" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="yNT-Qq-PZi"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Your Stats" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Your Stats" image="local" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="averageWastedTimeInDayLabel" destination="CP5-51-fcY" id="dRM-4f-yCh"/>
                         <outlet property="averageWastedTimeInUseLabel" destination="rOa-7t-caR" id="eF8-kf-vPI"/>
@@ -341,7 +341,7 @@
         <!--Money waste-->
         <scene sceneID="M1C-VN-xLG">
             <objects>
-                <viewController id="o5I-Og-13s" userLabel="Money waste" customClass="MoneyWasteViewController" customModule="BigMT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="o5I-Og-13s" userLabel="Money waste" customClass="MoneyWasteViewController" customModule="Time_Waster" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tEb-rH-msn"/>
                         <viewControllerLayoutGuide type="bottom" id="M8V-rP-Fij"/>
@@ -452,7 +452,7 @@
                             <constraint firstItem="a5f-vI-nul" firstAttribute="centerY" secondItem="KLJ-75-NeN" secondAttribute="centerY" constant="-17" id="uvf-v6-SbS"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Money Waster" id="D1P-35-Qn2"/>
+                    <tabBarItem key="tabBarItem" title="Money Waster" image="money" id="D1P-35-Qn2"/>
                     <connections>
                         <outlet property="averageWastedMoneyLabel" destination="Uck-cL-jbM" id="CHU-pD-Ije"/>
                         <outlet property="currentlyWastedTimeLabel" destination="zmY-uC-6Jf" id="qPJ-8s-oSV"/>
@@ -469,7 +469,7 @@
         <!--Store-->
         <scene sceneID="Upf-m8-1qi">
             <objects>
-                <viewController id="Ufg-Sh-dpA" customClass="IAPViewController" customModule="BigMT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ufg-Sh-dpA" customClass="IAPViewController" customModule="Time_Waster" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CAg-pF-0qc"/>
                         <viewControllerLayoutGuide type="bottom" id="RGg-MC-htt"/>
@@ -560,7 +560,7 @@
                             <constraint firstItem="obl-lE-Knz" firstAttribute="leading" secondItem="rl7-tB-Djx" secondAttribute="leading" id="yn7-rg-cHM"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Store" id="MHY-WQ-g0B"/>
+                    <tabBarItem key="tabBarItem" title="Store" image="store" id="MHY-WQ-g0B"/>
                     <connections>
                         <outlet property="currentlyWastedTimeLabel" destination="eQX-DI-LNE" id="qm8-ER-Kq3"/>
                         <outlet property="loadingLabel" destination="mM5-RA-Z0S" id="30c-S1-dfm"/>
@@ -595,7 +595,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="globe" width="25" height="25"/>
+        <image name="home" width="25" height="25"/>
+        <image name="local" width="25" height="25"/>
+        <image name="money" width="25" height="25"/>
+        <image name="store" width="25" height="25"/>
     </resources>
 </document>

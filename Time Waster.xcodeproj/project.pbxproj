@@ -41,7 +41,7 @@
 		8E5B31761D18BC3B00057B01 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		8EAA25F01D146DDC000C7346 /* GlobalStopWatches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalStopWatches.swift; sourceTree = "<group>"; };
 		8EBCD02F1D2BE91E0026223B /* IAPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPViewController.swift; sourceTree = "<group>"; };
-		8EFAB03A1D118CEB00666DA6 /* BigMT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigMT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EFAB03A1D118CEB00666DA6 /* Time Waster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Waster.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFAB03D1D118CEB00666DA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EFAB03F1D118CEB00666DA6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8EFAB0411D118CEB00666DA6 /* LocalStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStatsViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		8EFAB03B1D118CEB00666DA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8EFAB03A1D118CEB00666DA6 /* BigMT.app */,
+				8EFAB03A1D118CEB00666DA6 /* Time Waster.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,9 +137,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8EFAB0391D118CEB00666DA6 /* BigMT */ = {
+		8EFAB0391D118CEB00666DA6 /* Time Waster */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EFAB04E1D118CEC00666DA6 /* Build configuration list for PBXNativeTarget "BigMT" */;
+			buildConfigurationList = 8EFAB04E1D118CEC00666DA6 /* Build configuration list for PBXNativeTarget "Time Waster" */;
 			buildPhases = (
 				8EFAB0361D118CEB00666DA6 /* Sources */,
 				8EFAB0371D118CEB00666DA6 /* Frameworks */,
@@ -149,9 +149,9 @@
 			);
 			dependencies = (
 			);
-			name = BigMT;
+			name = "Time Waster";
 			productName = BigMT;
-			productReference = 8EFAB03A1D118CEB00666DA6 /* BigMT.app */;
+			productReference = 8EFAB03A1D118CEB00666DA6 /* Time Waster.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -184,7 +184,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8EFAB0351D118CEB00666DA6 /* Build configuration list for PBXProject "BigMT" */;
+			buildConfigurationList = 8EFAB0351D118CEB00666DA6 /* Build configuration list for PBXProject "Time Waster" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -197,7 +197,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8EFAB0391D118CEB00666DA6 /* BigMT */,
+				8EFAB0391D118CEB00666DA6 /* Time Waster */,
 			);
 		};
 /* End PBXProject section */
@@ -350,12 +350,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BigMT/BigMT.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Max Tkach (44B6K99V78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BigMT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anvil.BigMT;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "954b8b07-1fe3-4f58-859d-c26541fdd60c";
+				PRODUCT_NAME = "Time Waster";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -365,19 +365,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BigMT/BigMT.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Max Tkach (44B6K99V78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BigMT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anvil.BigMT;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "954b8b07-1fe3-4f58-859d-c26541fdd60c";
+				PRODUCT_NAME = "Time Waster";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8EFAB0351D118CEB00666DA6 /* Build configuration list for PBXProject "BigMT" */ = {
+		8EFAB0351D118CEB00666DA6 /* Build configuration list for PBXProject "Time Waster" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EFAB04C1D118CEC00666DA6 /* Debug */,
@@ -386,7 +386,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EFAB04E1D118CEC00666DA6 /* Build configuration list for PBXNativeTarget "BigMT" */ = {
+		8EFAB04E1D118CEC00666DA6 /* Build configuration list for PBXNativeTarget "Time Waster" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EFAB04F1D118CEC00666DA6 /* Debug */,

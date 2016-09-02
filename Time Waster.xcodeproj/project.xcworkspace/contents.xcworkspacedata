@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:BigMT.xcodeproj">
+      location = "self:/Users/astarta/Development/projects/the-time-waster/Time Waster.xcodeproj">
    </FileRef>
 </Workspace>
